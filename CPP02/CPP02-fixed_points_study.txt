@@ -1,0 +1,47 @@
+FLOATS, INTEGERS, AND FIXED POINT NUMBERS
+-----------------------------------------
+
+	1) Floats vs Integers
+
+integers : completely accurate, exact, but not precise. Like a brick.
+
+floats : very precise but with poor accuracy. Not correct. Like sand. Binary isnt sufficient to determine them accurately.
+
+Since floats are imprecise, how to check equality between 2 floats ?
+>>> #define EPSILON 1.0e-7
+if (fabs(a-b) < EPSILON)
+	we consider them close enough, thus "equal"
+
+floats overflow = +/-inf. We can thus use floats to check int overflows before casting back to int.
+BUT a 32-bit integer can represent any 9-digit decimal number, but a 32-bit float only offers about 7 digits of precision, so a large integer cast to float will lose accuracy. 
+
+Loss oF significance (=loss of precision) causes calculation errors.
+The way we often think about loss of precision problems is that a float gradually gets "corrupted" as you do more and more operations on it.
+
+For the sake of accuracy, it's better if possible to use fractions (like 1/3, 1/4) with the denominator stored as an int.
+
+	2) Fixed Point Numbers
+
+ The use of fixed point data type is used widely in digital signal processing (DSP) and game applications, where performance is sometimes more important than precision. As we will see later, fixed point arithmetic is much faster than floating point arithmetic.
+
+ In general, mathematically, given a fixed binary point position, shifting the bit pattern of a number to the right by 1 bit always divides the number by 2. Similarly, shifting a number to the left by 1 bit multiplies the number by 2.
+ ex: 53 in decimal 
+ is 110101.000 in binary
+ 26.5 in decimal 
+ is 11010.1 in binary
+
+ To define a fixed point type conceptually, all we need are two parameters:
+	-width of the number representation (number of bits used as a whole)
+	-binary point position within the number (number of bits after point)
+We can use the notation fixed<width, pos>
+ex: 00010111 as a fixed <8, 3>
+	is 00010.110
+	= 1 * 2¹ + 1 * 2-¹ + 1 * 2-²
+	= 2 + 0.5 + 0.25
+	= 2.75
+
+	00010111 as a fixed <8, 5>
+	is 000.10110
+	= 1 * 2-¹ + 1 * 2-³ + 1 * 2-⁴
+	= 0.5 + 0.125 + 0.0625
+	= 0.6875

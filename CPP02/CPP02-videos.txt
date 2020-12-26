@@ -1,0 +1,94 @@
+/!\ PENSER À BIEN METTRE CONST AUX FONCTIONS ET PARAMS
+QUE JE NE MODIFIE PAS
+/!\ BIEN INCLURE TOUTES LES LIBS DANS CHAQUE FICHIER OU
+ELLES SONT UTILISÉES
+
+
+POLYMORPHISME ADHOC
+(= surcharge de fonction)
+
+class Sample {
+	Sample();
+	~Sample();
+
+	void bar(char const c) const;
+	void bar(int const n) const;
+	void bar(float const z) const;
+	void bar(Sample const & i) const;
+}
+>>> c'est le type du param qui va déterminer quelle fonction sera appelée
+
+--------------------------------------
+
+3 types de notation:
+
+PREFIXE (= notation FONCTIONnelle)
++(1, 1)
+1.+(1)
+instance.fonctionMembre(param)
+
+INFIXE (notation la plus naturelle)
+1 + 1
+
+POSTFIXE (pour faire des calculs de pile)
+1 1 +
+
+class Integer {
+	
+	public:
+		Integer(int const n);
+		~Integer(void);
+
+		int getValue(void) const;
+
+		Integer & operator=(Integer const & rhs);
+		//overload de l'opérateur d'assignation '=', rhs = rightHandSide
+		// on renverra l'instance courante pour pouvoir faire des assignations chainées, du type a = b = c.
+		//on fera instance.=(valeur);
+
+		Integer operator+(Integer const & rhs) const;
+		//overload de l'opérateur d'addition '+'
+		// on renvoie une copie du résultat
+
+	private:
+		int _n;
+}
+
+/!\ GARDER LE COMPORTEMENT NATUREL DES OPERATEURS, NE PAS FAIRE DES SURCHARGES N'IMPORTE COMMENT
+/!\ DE PREFERENCE NE PAS FAIRE DE SURCHARGE D'OPERATEURS
+
+---------------------------------------------------------
+
+LA FORME CANONIQUE (DE COPLIEN)
+= norme de construction des classes
+/!\ TOUJOURS L'UTILISER DESORMAIS
+
+DOIT CONTENIR CES 4 ELEMENTS AU MOINS:
+un constructeur par défaut
+un constructeur par copie
+un opérateur d'assignation
+un destructeur
+
+Class Sample {
+	public:
+		Sample(void); //constructeur par défaut
+		Sample(int const a);
+		Sample(Sample const &src); //constructeur par copie
+		~Sample(void); //destructeur
+
+		Sample & operator=(Sample const & rhs); //operateur d'assignation qui met à jour l'instance courante
+	
+		int getFoo(void) const;
+	private:
+		int _foo;
+};
+
+std::ostream & operator<<(std::ostream & o, Sample const & i);
+
+
+On pourra faire une initialisation avec:
+Sample instance1;
+Sample instance2(42);
+Sample instance3 (instance1);
+
+instance3 = instance2;

@@ -1,0 +1,83 @@
+ALLOUER UN OBJET EN CPP : 
+
+/!\ NE PAS APPELER MALLOC ET FREE, Il faut appeler NEW et DELETE, sinon les constructeurs et destructeurs ne sont pas appelés.. new et delete appellent malloc et free + les const et dest.
+
+instance *bla  = new class("Blabla");
+delete bla;
+
+instance *tab = new class[42];
+delete [] tab;
+
+malloc->>> allocates on the heap
+static declaration ->>> declares on the stack
+
+------------------------------------------------------
+
+REFERENCE VS POINTEUR:
+
+Une référence = un pointeur constant, tjs déréférencé, jamais NULL. Doit etre assigné
+dès son init, ne peut pas être réassigné.
+Si je peux l'init dès le début et je n'ai pas besoin de changer vers quoi ça pointe >>> ref
+Sinon >>> pointeur.
+
+int bla = 42;
+
+int *blaPtr = &bla;
+int &blaRef = bla;
+
+std::cout << "bla vaut" << bla;
+std::cout << "bla vaut" << blaRef;
+
+-----------------------------
+
+void byPtr(std::string *str){
+	*str += " and ponies";	
+}
+
+void byConstPtr(std::string const *str) {
+	std::cout << *str << std::endl;
+}
+
+void byRef(std::string &str){
+	str += " and ponies";	
+}
+
+void byConstRef(std::string const &str) {
+	std::cout << str << std::endl;
+}
+
+int main(void) {
+	std::string str = "i like butterflies";
+
+	std::cout << str << std::endl;
+	byPtr(&str);
+	byConstPtr(&str);
+
+	std::string str = "i like otters";
+
+	std::cout << str << std::endl;
+	byRef(str);
+	byConstRef(str);
+}
+
+---------------------------------------------
+
+FILESTREAMS:
+
+int main(){
+	std::ifstream ifs("numbers"); //ifs = InputFileStream
+	unsigned int dst;
+	unsigned int dst2;
+	ifs >> dst >> dst2;
+	//je lis depuis le fichier numbers qui contient 2 ints que j'envoie dans dst et dst2
+
+	std::cout << dst << " " << dst2 << std::endl;
+	ofs.close();
+	
+	//---------------------------------
+	std::ofstream ofs("test.out");//OutputFileStream
+
+	ofs << "i like ponies" << std::endl;
+	//j'écris dans le fichier output
+	ofs.close();
+}

@@ -1,0 +1,43 @@
+INHERITANCE:
+
+https://www.geeksforgeeks.org/inheritance-in-c/
+public inheritance: 	public members stay public
+						protected stay protected
+protected inheritance: 	public members become protected
+						protected stay protected
+private inheritance: 	public members become private
+						protected become private
+
+
+class Cat : public Animal {
+	//La classe Cat contiendra alors tous les membres de Animal, + ses propres membres
+
+};
+
+class Animal {
+	public: //can be accessed by all
+		int bli;
+
+	private: //can be accessed by Animals
+		int _bla;
+
+	protected: 	//can be accessed by Animals or derived object
+		int _blou;
+}
+
+/!\ ici, Cat n'a pas acces a _bla, mais a acces a bli et blou
+
+
+VIRTUAL INHERITANCE : to avoid ambiguity in duplicate inherited members in children, in case of diamond inheritance.
+https://www.geeksforgeeks.org/virtual-base-class-in-c/
+
+MULTIPLE INHERITANCE:
+https://www.geeksforgeeks.org/multiple-inheritance-in-c/
+
+class C: public B, public A  // Note the order 
+{ 
+	public: 
+	  C()  { cout << "C's constructor called" << endl; } 
+}; 
+>> C instance will show B's constructor, then A's, then C's.
+Destructors happen in reverse order.s
