@@ -35,3 +35,5 @@ Learning CPP basics.
   - Virtual inheritance
   - Multiple inheritance
   
+
+Written in december 2020.
