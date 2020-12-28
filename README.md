@@ -35,5 +35,9 @@ Learning CPP basics.
   - Virtual inheritance
   - Multiple inheritance
   
+**CPP04**
+  - Sub-typing polymorphism, virtual members and methods
+  - Pure methods, abstract classes and Interfaces
+
 
 Written in december 2020.
