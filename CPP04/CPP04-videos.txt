@@ -1,0 +1,30 @@
+POLYMORPHISME PAR SOUS-TYPAGE
+
+Si class sampleB hérite de class sample A, class sample B est une class sampleA.
+je peux donc faire pointer une instance parent sur un type d'enfant, et le modifier sur d'autres types d'enfants
+
+classChild c = new *classChild();
+ClassParent d = new *classChild();
+
+auquel cas, d appelera principalement les membres de classParent si un membre a le meme nom dans classParent et classChild.
+
+Si je veux plutot que la fonction de la classChild pointée soit utilisée, il me faut déclarer dans mes classes les fonctions/membres du meme nom avec virtual. Ce sera donc la fonction du type REEL, son sous type, de l'instance qui sera choisie à la compilation.
+
+Une méthode = une fonction membres virtuelle dont la résolution est dynamique.
+
+CLASSES ABSTRAITES ET INTERFACES
+ Une méthode pure =  méthode définie comme = 0.
+La classe sera définie comme abstraite
+on préfixe le nom de classe par A par convention.
+Une classe abstraite ne peut pas être instanciée
+
+ex: 
+class ACharacter {
+	public:
+		virtual void attack(std::string const &target) = 0;
+		void sayHello(std::string const &target);
+}
+
+Une classe abstraite qui ne possede que des methodes pures est une interface.
+Elle ne pourra pas posséder d'attributs.
+On préfixe le nom de classe par I par convention.
