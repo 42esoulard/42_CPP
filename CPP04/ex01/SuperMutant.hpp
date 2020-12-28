@@ -1,37 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Victim.hpp                                         :+:      :+:    :+:   */
+/*   SuperMutant.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: esoulard <esoulard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/28 10:53:57 by esoulard          #+#    #+#             */
-/*   Updated: 2020/12/28 14:31:30 by esoulard         ###   ########.fr       */
+/*   Created: 2020/12/28 15:35:40 by esoulard          #+#    #+#             */
+/*   Updated: 2020/12/28 19:04:41 by esoulard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VICTIM_HPP
-#define VICTIM_HPP
+#ifndef SUPERMUTANT_HPP
+#define SUPERMUTANT_HPP
 
+#include "Enemy.hpp"
 #include <iostream>
 
-class Victim {
+class SuperMutant : public Enemy {
 	
 	public:
-		Victim(std::string const &name);
-		Victim(Victim const &src);
-		~Victim(void);
+		SuperMutant(void);
+		SuperMutant(SuperMutant const &src);
+		virtual ~SuperMutant(void);
 
-		Victim & 			operator=(Victim const &rhs);
-		std::string const	getName(void) const;
-		virtual void 		getPolymorphed(void) const;
+		SuperMutant & 	operator=(SuperMutant const &rhs);
 
-	protected:
-		std::string  _name;
-		Victim(void);
+		virtual void 	takeDamage(int);
 		
 };
-
-std::ostream & operator<<(std::ostream &o, Victim const &rhs);
 
 #endif

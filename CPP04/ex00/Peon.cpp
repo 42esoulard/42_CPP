@@ -6,7 +6,7 @@
 /*   By: esoulard <esoulard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 11:45:59 by esoulard          #+#    #+#             */
-/*   Updated: 2020/12/28 13:12:53 by esoulard         ###   ########.fr       */
+/*   Updated: 2020/12/28 14:31:04 by esoulard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ Peon::Peon(void) {
 Peon::Peon(Peon const &src) {
 
 	std::cout << "Peon: Copy constructor called" << std::endl;
+	*this = src;
 };
 
 Peon::~Peon(void) {
@@ -41,5 +42,6 @@ void 			Peon::getPolymorphed(void) const {
 Peon & 			Peon::operator=(Peon const &rhs) {
 
 	std::cout << "Peon: Assignation operator called" << std::endl;
+	return *this;
 };
 

@@ -6,7 +6,7 @@
 /*   By: esoulard <esoulard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 12:30:27 by esoulard          #+#    #+#             */
-/*   Updated: 2020/12/28 13:12:25 by esoulard         ###   ########.fr       */
+/*   Updated: 2020/12/28 14:32:07 by esoulard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ Cat::Cat(void) {
 Cat::Cat(Cat const &src) {
 
 	std::cout << "Cat: Copy constructor called" << std::endl;
+	*this = src;
 };
 
 Cat::~Cat(void) {
@@ -41,5 +42,6 @@ void 			Cat::getPolymorphed(void) const {
 Cat & 			Cat::operator=(Cat const &rhs) {
 
 	std::cout << "Cat: Assignation operator called" << std::endl;
+	return *this;
 };
 

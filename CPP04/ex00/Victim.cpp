@@ -6,7 +6,7 @@
 /*   By: esoulard <esoulard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 10:53:41 by esoulard          #+#    #+#             */
-/*   Updated: 2020/12/28 13:13:14 by esoulard         ###   ########.fr       */
+/*   Updated: 2020/12/28 14:32:18 by esoulard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ Victim::Victim(void) {
 Victim::Victim(Victim const &src) {
 
 	std::cout << "Victim: Copy constructor called" << std::endl;
+	*this = src;
 };
 
 Victim::~Victim(void) {
@@ -36,6 +37,8 @@ Victim::~Victim(void) {
 Victim & 			Victim::operator=(Victim const &rhs) {
 
 	std::cout << "Victim: Assignation operator called" << std::endl;
+	this->_name = rhs.getName();
+	return *this;
 };
 
 std::string const 	Victim::getName(void) const {

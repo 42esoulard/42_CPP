@@ -6,7 +6,7 @@
 /*   By: esoulard <esoulard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 10:53:17 by esoulard          #+#    #+#             */
-/*   Updated: 2020/12/28 13:12:04 by esoulard         ###   ########.fr       */
+/*   Updated: 2020/12/28 14:30:40 by esoulard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ Sorcerer::Sorcerer(void) {
 Sorcerer::Sorcerer(Sorcerer const &src) {
 
 	std::cout << "Sorcerer: Copy constructor called" << std::endl;
+	*this = src;
 };
 
 Sorcerer::~Sorcerer(void) {
@@ -38,6 +39,9 @@ Sorcerer::~Sorcerer(void) {
 Sorcerer & 			Sorcerer::operator=(Sorcerer const &rhs) {
 
 	std::cout << "Sorcerer: Assignation operator called" << std::endl;
+	this->_name = rhs.getName();
+	this->_title = rhs.getTitle();
+	return *this;
 };
 
 std::string const 	Sorcerer::getName(void) const {

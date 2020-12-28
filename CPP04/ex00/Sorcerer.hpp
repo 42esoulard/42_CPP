@@ -6,7 +6,7 @@
 /*   By: esoulard <esoulard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 10:52:50 by esoulard          #+#    #+#             */
-/*   Updated: 2020/12/28 11:54:56 by esoulard         ###   ########.fr       */
+/*   Updated: 2020/12/28 14:37:21 by esoulard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ class Sorcerer {
 
 	private:
 		Sorcerer(void);
-		std::string const _name;
-		std::string const _title;
+		std::string  _name;
+		std::string  _title;
 
 		
 };
