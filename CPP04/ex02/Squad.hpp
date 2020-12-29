@@ -6,7 +6,7 @@
 /*   By: esoulard <esoulard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/29 10:23:31 by esoulard          #+#    #+#             */
-/*   Updated: 2020/12/29 13:18:51 by esoulard         ###   ########.fr       */
+/*   Updated: 2020/12/29 14:55:45 by esoulard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,16 +39,14 @@ class Squad : public ISquad {
 		virtual int push(ISpaceMarine*);
 		
 		Unit 	*getUnitList(void) const;
+		void 	deleteUnitList(void);
 
 
 
 	private:
 		int				_unitCount;
-		Unit 			*_unitList;//contains first unit
-						//units must have next ptr
+		Unit 			*_unitList;
 		
 };
-
-std::ostream & operator<<(std::ostream &o, Squad const &rhs);
 
 #endif

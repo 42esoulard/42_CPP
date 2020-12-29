@@ -6,7 +6,7 @@
 /*   By: esoulard <esoulard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/29 11:36:14 by esoulard          #+#    #+#             */
-/*   Updated: 2020/12/29 11:37:54 by esoulard         ###   ########.fr       */
+/*   Updated: 2020/12/29 14:56:25 by esoulard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,5 @@ class AssaultTerminator : public ISpaceMarine {
 		virtual void 			rangedAttack(void) const;
 		virtual void 			meleeAttack(void) const;
 };
-
-// std::ostream & operator<<(std::ostream &o, SpaceMarine const &rhs);
 
 #endif

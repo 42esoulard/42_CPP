@@ -6,7 +6,7 @@
 /*   By: esoulard <esoulard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/29 11:42:04 by esoulard          #+#    #+#             */
-/*   Updated: 2020/12/29 13:34:45 by esoulard         ###   ########.fr       */
+/*   Updated: 2020/12/29 14:58:21 by esoulard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,21 +23,26 @@ int main(void) {
 	ISpaceMarine* jim = new AssaultTerminator;
 	
 	ISquad* vlc = new Squad;
+	std::cout << std::endl;
 	vlc->push(bob);
-	std::cout << "main aft bob push" << std::endl;
 	vlc->push(jim);
-	std::cout << "main aft jim push" << std::endl;
+	vlc->push(jim);
 	
 	for (int i = 0; i < vlc->getCount(); ++i)
 	{
-		std::cout << "x" << std::endl;
 		ISpaceMarine* cur = vlc->getUnit(i);
-		std::cout << "y" << std::endl;
+		std::cout << std::endl;
 		cur->battleCry();
 		cur->rangedAttack();
 		cur->meleeAttack();
+		std::cout << std::endl;
 	}
+
+	ISquad* beepboop = new Squad;
+
+
 	delete vlc;
+	delete beepboop;
 
 	return 0;
 }

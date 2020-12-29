@@ -6,7 +6,7 @@
 /*   By: esoulard <esoulard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/29 11:35:56 by esoulard          #+#    #+#             */
-/*   Updated: 2020/12/29 11:52:50 by esoulard         ###   ########.fr       */
+/*   Updated: 2020/12/29 14:56:30 by esoulard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,6 @@ AssaultTerminator & AssaultTerminator::operator=(AssaultTerminator const &rhs) {
 	return *this;
 };
 
-// std::ostream & operator<<(std::ostream &o, AssaultTerminator const &rhs) {
-
-// 	//return o << << std::endl;
-// };
 
 ISpaceMarine* 	AssaultTerminator::clone(void) const {
 

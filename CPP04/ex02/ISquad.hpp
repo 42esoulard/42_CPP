@@ -6,7 +6,7 @@
 /*   By: esoulard <esoulard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/29 10:17:47 by esoulard          #+#    #+#             */
-/*   Updated: 2020/12/29 11:57:04 by esoulard         ###   ########.fr       */
+/*   Updated: 2020/12/29 14:56:15 by esoulard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 
 class ISquad {
 	public:
-		virtual ~ISquad() {}
-		virtual int getCount() const = 0;
+		virtual ~ISquad(void) {};
+		virtual int getCount(void) const = 0;
 		virtual ISpaceMarine* getUnit(int) const = 0;
 		virtual int push(ISpaceMarine*) = 0;
 };

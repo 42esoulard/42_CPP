@@ -6,7 +6,7 @@
 /*   By: esoulard <esoulard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/29 11:19:07 by esoulard          #+#    #+#             */
-/*   Updated: 2020/12/29 11:53:11 by esoulard         ###   ########.fr       */
+/*   Updated: 2020/12/29 14:55:57 by esoulard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,6 @@ TacticalMarine & TacticalMarine::operator=(TacticalMarine const &rhs) {
 	std::cout << "[TacticalMarine] Assignation operator called" << std::endl;
 	return *this;
 };
-
-// std::ostream & operator<<(std::ostream &o, TacticalMarine const &rhs) {
-
-// 	//return o << << std::endl;
-// };
 
 
 ISpaceMarine* 	TacticalMarine::clone(void) const {
