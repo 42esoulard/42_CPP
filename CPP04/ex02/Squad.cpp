@@ -6,7 +6,7 @@
 /*   By: esoulard <esoulard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/29 10:18:25 by esoulard          #+#    #+#             */
-/*   Updated: 2020/12/30 13:43:43 by esoulard         ###   ########.fr       */
+/*   Updated: 2020/12/30 13:57:16 by esoulard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ Squad::Squad(void) : _unitCount(0), _unitList(new Unit) {
 
 	_unitList->cur = nullptr;
 	_unitList->next = nullptr;
-	_unitList->copy = 0;
 	std::cout << "[Squad] Default constructor called" << std::endl;
 };
 
@@ -55,8 +54,7 @@ Unit 		&Squad::copyUnitList(void) const {
 
 	std::cout << "[Copying squad UnitList!]" << std::endl;
 	
-	copy->cur = src->cur;
-	copy->copy = 1;
+	copy->cur = src->cur->clone();
 	copy->next = nullptr;
 
 	for (int i = 1; i < _unitCount; ++i) {
@@ -64,8 +62,7 @@ Unit 		&Squad::copyUnitList(void) const {
 		src = src->next;
 		copy->next = new Unit;
 		copy = copy->next;
-		copy->cur = src->cur;
-		copy->copy = 1;
+		copy->cur = src->cur->clone();
 		copy->next = nullptr;
 	}
 	return *copyRet;
@@ -86,7 +83,7 @@ void 			Squad::deleteUnitList(void) {
 		while (this->_unitList) {
 
 			tmpNxt = this->_unitList->next;
-			if (!this->_unitList->copy && this->_unitList->cur) {
+			if (this->_unitList->cur) {
 				
 				delete this->_unitList->cur;
 				this->_unitList->cur = nullptr;
@@ -97,7 +94,7 @@ void 			Squad::deleteUnitList(void) {
 		}
 	}
 	else if (this->_unitList) {
-			delete this->_unitList;
+		delete this->_unitList;
 	}
 
 	this->_unitCount = 0;
@@ -145,7 +142,6 @@ int 			Squad::push(ISpaceMarine* newUnit) {
 	}
 
 	this->_unitList->cur = newUnit;
-	this->_unitList->copy = 0;
 	this->_unitList->next = nullptr;
 
 	this->_unitList = tmp;

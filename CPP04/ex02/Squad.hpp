@@ -6,7 +6,7 @@
 /*   By: esoulard <esoulard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/29 10:23:31 by esoulard          #+#    #+#             */
-/*   Updated: 2020/12/30 13:46:13 by esoulard         ###   ########.fr       */
+/*   Updated: 2020/12/30 13:47:50 by esoulard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 typedef struct t_Unit {
 
 		ISpaceMarine 	*cur;
-		int 			copy;
 		t_Unit 			*next;
 
 }				Unit;
