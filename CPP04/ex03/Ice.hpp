@@ -1,41 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AMateria.hpp                                       :+:      :+:    :+:   */
+/*   Ice.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: esoulard <esoulard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/30 14:17:01 by esoulard          #+#    #+#             */
-/*   Updated: 2020/12/30 16:13:10 by esoulard         ###   ########.fr       */
+/*   Created: 2020/12/30 16:00:22 by esoulard          #+#    #+#             */
+/*   Updated: 2020/12/30 16:16:40 by esoulard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef AMATERIA_HPP
-#define AMATERIA_HPP
+#ifndef ICE_HPP
+#define ICE_HPP
 
 #include <iostream>
+#include "AMateria.hpp"
 
-class AMateria {
-
+class Ice : public AMateria {
+	
 	public:
-		AMateria(std::string const & type);
-		
-		virtual ~AMateria(void);
+		Ice(void);
+		Ice(Ice const &src);
+		virtual ~Ice(void);
 
-		AMateria & operator=(AMateria const &rhs);
+		Ice & operator=(Ice const &rhs);
 
-		std::string const & getType(void) const; //Returns the materia type
-		unsigned int 		getXP(void) const; //Returns the Materia's XP
-		virtual AMateria* 	clone(void) const = 0;
+		virtual AMateria* 	clone(void) const;
 		virtual void 		use(ICharacter& target);
 
 	private:
-		AMateria(void);
-		AMateria(AMateria const &src);
-		unsigned int 	_xp;
-		std::string 	type;
 		
-
+		
 };
+
+// std::ostream & operator<<(std::ostream &o, Ice const &rhs);
 
 #endif

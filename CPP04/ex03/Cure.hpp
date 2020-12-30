@@ -1,41 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AMateria.hpp                                       :+:      :+:    :+:   */
+/*   Cure.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: esoulard <esoulard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/30 14:17:01 by esoulard          #+#    #+#             */
-/*   Updated: 2020/12/30 16:13:10 by esoulard         ###   ########.fr       */
+/*   Created: 2020/12/30 16:15:27 by esoulard          #+#    #+#             */
+/*   Updated: 2020/12/30 16:16:43 by esoulard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef AMATERIA_HPP
-#define AMATERIA_HPP
+#ifndef CURE_HPP
+#define CURE_HPP
 
 #include <iostream>
+#include "AMateria.hpp"
 
-class AMateria {
-
+class Cure : public AMateria {
+	
 	public:
-		AMateria(std::string const & type);
-		
-		virtual ~AMateria(void);
+		Cure(void);
+		Cure(Cure const &src);
+		virtual ~Cure(void);
 
-		AMateria & operator=(AMateria const &rhs);
+		Cure & operator=(Cure const &rhs);
 
-		std::string const & getType(void) const; //Returns the materia type
-		unsigned int 		getXP(void) const; //Returns the Materia's XP
-		virtual AMateria* 	clone(void) const = 0;
+		virtual AMateria* 	clone(void) const;
 		virtual void 		use(ICharacter& target);
 
 	private:
-		AMateria(void);
-		AMateria(AMateria const &src);
-		unsigned int 	_xp;
-		std::string 	type;
 		
-
+		
 };
+
+std::ostream & operator<<(std::ostream &o, Cure const &rhs);
 
 #endif
