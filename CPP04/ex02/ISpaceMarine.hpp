@@ -6,7 +6,7 @@
 /*   By: esoulard <esoulard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/29 11:17:50 by esoulard          #+#    #+#             */
-/*   Updated: 2020/12/29 14:56:19 by esoulard         ###   ########.fr       */
+/*   Updated: 2020/12/30 13:42:01 by esoulard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 class ISpaceMarine {
 
 	public:
+		
 		virtual ~ISpaceMarine(void) {};
 		virtual ISpaceMarine* clone(void) const = 0;
 		virtual void battleCry(void) const = 0;

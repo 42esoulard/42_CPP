@@ -6,7 +6,7 @@
 /*   By: esoulard <esoulard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/29 10:23:31 by esoulard          #+#    #+#             */
-/*   Updated: 2020/12/29 14:55:45 by esoulard         ###   ########.fr       */
+/*   Updated: 2020/12/30 13:46:13 by esoulard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,18 @@
 #include "ISquad.hpp"
 #include "ISpaceMarine.hpp"
 
-class Unit {
-	
-	public:
-		ISpaceMarine 	*cur;
-		Unit 			*next;
+typedef struct t_Unit {
 
-};
+		ISpaceMarine 	*cur;
+		int 			copy;
+		t_Unit 			*next;
+
+}				Unit;
 
 class Squad : public ISquad {
 	
 	public:
+
 		Squad(void);
 		Squad(Squad const &src);
 		virtual ~Squad(void);
@@ -38,12 +39,13 @@ class Squad : public ISquad {
 		virtual ISpaceMarine* getUnit(int) const;
 		virtual int push(ISpaceMarine*);
 		
-		Unit 	*getUnitList(void) const;
+		Unit 	&copyUnitList(void) const;
 		void 	deleteUnitList(void);
 
 
 
 	private:
+
 		int				_unitCount;
 		Unit 			*_unitList;
 		

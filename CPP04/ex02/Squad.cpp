@@ -6,7 +6,7 @@
 /*   By: esoulard <esoulard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/29 10:18:25 by esoulard          #+#    #+#             */
-/*   Updated: 2020/12/29 14:56:45 by esoulard         ###   ########.fr       */
+/*   Updated: 2020/12/30 13:43:43 by esoulard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,16 @@ Squad::Squad(void) : _unitCount(0), _unitList(new Unit) {
 
 	_unitList->cur = nullptr;
 	_unitList->next = nullptr;
+	_unitList->copy = 0;
 	std::cout << "[Squad] Default constructor called" << std::endl;
 };
 
-Squad::Squad(Squad const &src) {
+Squad::Squad(Squad const &rhs) : _unitCount(0) {
 
 	std::cout << "[Squad] Copy constructor called" << std::endl;
-	*this = src;
+
+	this->_unitCount = rhs.getCount();
+	this->_unitList = &rhs.copyUnitList();
 };
 
 Squad::~Squad(void) {
@@ -39,14 +42,33 @@ Squad & Squad::operator=(Squad const &rhs) {
 	this->deleteUnitList();
 
 	this->_unitCount = rhs.getCount();
-	this->_unitList = rhs.getUnitList();
+	this->_unitList = &rhs.copyUnitList();
 	
 	return *this;
 };
 
-Unit 			*Squad::getUnitList(void) const {
+Unit 		&Squad::copyUnitList(void) const {
 
-	return this->_unitList;
+	Unit *copy = new Unit;
+	Unit *copyRet = copy;
+	Unit *src  = this->_unitList;
+
+	std::cout << "[Copying squad UnitList!]" << std::endl;
+	
+	copy->cur = src->cur;
+	copy->copy = 1;
+	copy->next = nullptr;
+
+	for (int i = 1; i < _unitCount; ++i) {
+
+		src = src->next;
+		copy->next = new Unit;
+		copy = copy->next;
+		copy->cur = src->cur;
+		copy->copy = 1;
+		copy->next = nullptr;
+	}
+	return *copyRet;
 };
 
 int 			Squad::getCount(void) const {
@@ -56,20 +78,27 @@ int 			Squad::getCount(void) const {
 
 void 			Squad::deleteUnitList(void) {
 
-	Unit 		*tmp;
+	Unit 		*tmpNxt;
+	int i = 0;
 
 	if (this->_unitCount > 0) {
 
 		while (this->_unitList) {
 
-			tmp = this->_unitList->next;
-			delete this->_unitList->cur;
+			tmpNxt = this->_unitList->next;
+			if (!this->_unitList->copy && this->_unitList->cur) {
+				
+				delete this->_unitList->cur;
+				this->_unitList->cur = nullptr;
+			}
 			delete this->_unitList;
-			this->_unitList = tmp;
+			this->_unitList = tmpNxt;
+			i++;
 		}
 	}
-	else
-		delete this->_unitList;
+	else if (this->_unitList) {
+			delete this->_unitList;
+	}
 
 	this->_unitCount = 0;
 };
@@ -116,6 +145,7 @@ int 			Squad::push(ISpaceMarine* newUnit) {
 	}
 
 	this->_unitList->cur = newUnit;
+	this->_unitList->copy = 0;
 	this->_unitList->next = nullptr;
 
 	this->_unitList = tmp;
