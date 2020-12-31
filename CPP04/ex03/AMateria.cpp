@@ -6,12 +6,9 @@
 /*   By: esoulard <esoulard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 15:53:46 by esoulard          #+#    #+#             */
-/*   Updated: 2020/12/30 16:28:11 by esoulard         ###   ########.fr       */
+/*   Updated: 2020/12/31 12:10:23 by esoulard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "AMateria.hpp"
-
 
 #include "AMateria.hpp"
 #include <iostream>
@@ -42,8 +39,8 @@ AMateria::~AMateria(void) {
 AMateria & AMateria::operator=(AMateria const &rhs) {
 
 	std::cout << "[AMateria] Assignation operator called" << std::endl;
-	// this->_xp = rhs.getXP();
-	// this->type = rhs.getType();
+	this->_xp = rhs.getXP();
+	this->_type = rhs.getType();
 	return *this;
 };
 
@@ -59,7 +56,6 @@ unsigned int 		AMateria::getXP(void) const {
 
 void 		AMateria::use(ICharacter& target) {
 
-	_xp += 10;
 };
 
 

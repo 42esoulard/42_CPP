@@ -6,7 +6,7 @@
 /*   By: esoulard <esoulard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 16:22:17 by esoulard          #+#    #+#             */
-/*   Updated: 2020/12/30 16:23:28 by esoulard         ###   ########.fr       */
+/*   Updated: 2020/12/31 10:08:46 by esoulard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 #define ICHARACTER_HPP
 
 #include <iostream>
+#include "AMateria.hpp"
+
+class AMateria;
 
 class ICharacter
 {

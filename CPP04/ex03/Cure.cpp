@@ -6,7 +6,7 @@
 /*   By: esoulard <esoulard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 16:16:27 by esoulard          #+#    #+#             */
-/*   Updated: 2020/12/30 16:18:46 by esoulard         ###   ########.fr       */
+/*   Updated: 2020/12/31 12:11:18 by esoulard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,11 @@ Cure & Cure::operator=(Cure const &rhs) {
 	return *this;
 };
 
-// std::ostream & operator<<(std::ostream &o, Cure const &rhs) {
-
-// 	return o << "* shoots an Cure bolt at NAME *" << std::endl;
-// };
-
 AMateria* 	Cure::clone(void) const {
 
 	AMateria *clone = new Cure;
 
-	clone = *this;
+	*clone = *this;
 	return clone;
 };
 
@@ -53,4 +48,4 @@ void 		Cure::use(ICharacter& target) {
 
 	std::cout << "* heals " << target.getName() << "’s wounds *" << std::endl;
 	this->_xp += 10;
-};C
+};

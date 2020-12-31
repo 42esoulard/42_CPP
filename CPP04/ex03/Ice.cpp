@@ -6,7 +6,7 @@
 /*   By: esoulard <esoulard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 16:00:09 by esoulard          #+#    #+#             */
-/*   Updated: 2020/12/30 16:19:04 by esoulard         ###   ########.fr       */
+/*   Updated: 2020/12/31 12:11:48 by esoulard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,12 @@ Ice & Ice::operator=(Ice const &rhs) {
 	return *this;
 };
 
-// std::ostream & operator<<(std::ostream &o, Ice const &rhs) {
-
-// 	return o << "* shoots an ice bolt at NAME *" << std::endl;
-// };
 
 AMateria* 	Ice::clone(void) const {
 
 	AMateria *clone = new Ice;
 
-	clone = *this;
+	*clone = *this;
 	return clone;
 };
 
