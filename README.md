@@ -38,6 +38,9 @@ Learning CPP basics.
 **CPP04**
   - Sub-typing polymorphism, virtual members and methods
   - Pure methods, abstract classes and Interfaces
+  
+**CPP05**
+  - Nested classes
+  - Exceptions
 
-
-Written in december 2020.
+Written in december 2020 - january 2021.
