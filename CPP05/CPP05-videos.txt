@@ -1,0 +1,76 @@
+NESTED CLASSES
+
+On peut définir une classe dans la définition d'une autre classe.
+
+ex 
+class Cat {
+	class Leg {
+
+	}
+}
+
+on appelera Cat::Leg.
+
+--------------------------------------------------
+
+EXCEPTIONS
+
+a utiliser pour les erreurs non prévues par le fonctionnement normal du programme (car consomme bcp de ressources systeme)
+
+try {
+	//do stuff
+	if (//theres an error) {
+		throw std::exception();
+	}
+	else {
+		//do regular stuff
+	}
+}
+catch (std::exception e) {
+	//handle error. Create e.what() function which will handle whatever error is encountered
+}
+
+----------------------------
+Exceptions can be thrown from any function as long as they are caught further down
+
+void function1() {
+	if (error) {
+		throw std::exception();
+	}
+	else
+		//do stuff
+}
+
+void function2() {
+	try {
+		function1();
+	}
+	catch (std::exception &e) {
+		//handle error
+		// on peut catch une référence
+	}
+}
+-------------------------
+On peut créer une classe d'exceptions:
+
+class HomemadeException : public std::exception {
+	public:
+		virtual const char* what() const throw() {
+			return ("Problem, no cookies");
+		}
+}
+
+Dans une déclaration de fonction, throw() a la fin indique que cette fonction peut throw une exception.
+
+On peut ensuit eessayer de catch nos exception a part des autres exceptions
+
+ex:
+try {
+	test();
+}
+catch (HomemadeException &e) {
+	return e.what();
+}
+catch (std::exception &e) {
+	//handle exception
+}
