@@ -6,7 +6,7 @@
 /*   By: esoulard <esoulard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/02 18:09:27 by esoulard          #+#    #+#             */
-/*   Updated: 2021/01/02 21:02:23 by esoulard         ###   ########.fr       */
+/*   Updated: 2021/01/04 10:13:54 by esoulard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,10 +85,12 @@ int const 			&Form::getExecGrade(void) const {
 
 void				Form::beSigned(Bureaucrat const *bureaucrat) {
 
-	if (_signed == YES) {
-		std::string ret = bureaucrat->getName() + " cannot sign " + _name + " because it is already signed.";
-		throw Form::AlreadySignedException(ret);
-	}
+	if (bureaucrat->getGrade() > _signGrade)
+		throw Form::GradeTooLowException();
+
+	if (_signed == YES) 
+		throw Form::AlreadySignedException();
+	
 	_signed = YES;
 };
 
@@ -107,9 +109,7 @@ char const *Form::GradeTooLowException::what() const throw() {
 };
 
 
-std::string const Form::AlreadySignedException::what(std::string const str) const throw() {
+char const *Form::AlreadySignedException::what() const throw() {
 
-	// std::string const *ret = 
-
-	return str;
+	return "it is already signed!";
 };

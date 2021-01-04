@@ -6,7 +6,7 @@
 /*   By: esoulard <esoulard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/02 15:51:44 by esoulard          #+#    #+#             */
-/*   Updated: 2021/01/02 20:55:30 by esoulard         ###   ########.fr       */
+/*   Updated: 2021/01/04 09:43:49 by esoulard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,12 @@ int main(void) {
 		std::cout << A612 << std::endl;
 		James.signForm(A612);
 		std::cout << A612 << std::endl;
+
 	}
 	catch (std::exception &e) {
 		std::cerr << e.what() << std::endl;	
 	}
+	
 
 	std::cout << std::endl;
 	std::cout << "---------Sophie: tries to sign form twice----------" << std::endl;

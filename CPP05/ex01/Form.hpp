@@ -6,7 +6,7 @@
 /*   By: esoulard <esoulard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/02 18:09:20 by esoulard          #+#    #+#             */
-/*   Updated: 2021/01/02 21:03:47 by esoulard         ###   ########.fr       */
+/*   Updated: 2021/01/04 09:44:52 by esoulard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,10 @@ class Form {
 				virtual char const *what() const throw();
 		};
 
-		class AlreadySignedException {
+		class AlreadySignedException : public std::exception {
 			
 			public:
-				virtual std::string const what(std::string const str) const throw();
+				virtual char const *what() const throw();
 		};	
 
 
