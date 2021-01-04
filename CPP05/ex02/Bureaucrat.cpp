@@ -6,7 +6,7 @@
 /*   By: esoulard <esoulard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/02 15:51:10 by esoulard          #+#    #+#             */
-/*   Updated: 2021/01/04 15:19:12 by esoulard         ###   ########.fr       */
+/*   Updated: 2021/01/04 15:35:03 by esoulard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,11 +82,18 @@ void				Bureaucrat::decrementGrade(void) {
 	std::cout << "Grade successfully decremented!" << std::endl;
 };
 
-void		Bureaucrat::signForm(Form &form) const {
+void		Bureaucrat::signForm(AForm &form) const {
 
 	std::cout << "Bureaucrat " << _name << " attempts to sign form "
 	<< form.getName() << "..." << std::endl;
 
 	form.beSigned(this);
 	std::cout << _name << " signs " << form.getName() << std::endl;
+};
+
+
+void 		Bureaucrat::executeForm(AForm const & form) {
+
+	form.tryExec(*this);
+	std::cout << _name << " executed " << form.getName() << std::endl;
 };
