@@ -6,24 +6,24 @@
 /*   By: esoulard <esoulard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/02 18:09:27 by esoulard          #+#    #+#             */
-/*   Updated: 2021/01/04 10:13:54 by esoulard         ###   ########.fr       */
+/*   Updated: 2021/01/04 15:05:14 by esoulard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
 #include <iostream>
 
-
 Form::Form(std::string const &name, int const &sGrade, int const eGrade) :
 _name(name), _signed(NO), _signGrade(sGrade), _execGrade(eGrade) {
 
 	std::cout << "Creating form..." << std::endl;
+
 	if (sGrade < 1 || eGrade < 1)
-		throw Form::GradeTooHighException();
+		throw Form::GradeTooHighException("Cannot create form " + _name);
 	if (sGrade > 150 || eGrade > 150)
-		throw Form::GradeTooLowException();
-	std::cout << "[Form] " << _name << " created! [Signing Grade: " << _signGrade 
-	<< " | Executing Grade: " << _execGrade << "]" << std::endl;
+		throw Form::GradeTooLowException("Cannot create form " + _name);
+
+	std::cout << "[Form] " << _name << " created!"  << std::endl;
 };
 
 Form::Form(void) : _name("template"), _signed(NO), _signGrade(1), _execGrade(1) {
@@ -50,13 +50,14 @@ Form & Form::operator=(Form const &rhs) {
 
 std::ostream & operator<<(std::ostream &o, Form const &rhs) {
 
+	std::string sign = "no";
 
 	if (rhs.getSignedStatus() == 1)
-		return o << "[Form " << rhs.getName() << " | Signing Grade: " << rhs.getSigningGrade() 
-		<< " | Executing Grade: " << rhs.getExecGrade() << " | Signed : yes]" << std::endl;
+		sign = "yes";
 
 	return o << "[Form " << rhs.getName() << " | Signing Grade: " << rhs.getSigningGrade() 
-	<< " | Executing Grade: " << rhs.getExecGrade() << " | Signed : no]" << std::endl;
+		<< " | Executing Grade: " << rhs.getExecGrade() << " | Signed : " << sign << "]" << std::endl;
+
 };
 
 
@@ -86,30 +87,10 @@ int const 			&Form::getExecGrade(void) const {
 void				Form::beSigned(Bureaucrat const *bureaucrat) {
 
 	if (bureaucrat->getGrade() > _signGrade)
-		throw Form::GradeTooLowException();
+		throw Form::GradeTooLowException(bureaucrat->getName() + " cannot sign " + _name);
 
 	if (_signed == YES) 
-		throw Form::AlreadySignedException();
+		throw Form::AlreadySignedException(bureaucrat->getName() + " cannot sign " + _name);
 	
 	_signed = YES;
-};
-
-
-
-
-char const *Form::GradeTooHighException::what() const throw() {
-
-	return "Grade too high!";
-};
-
-
-char const *Form::GradeTooLowException::what() const throw() {
-
-	return "Grade too low!";
-};
-
-
-char const *Form::AlreadySignedException::what() const throw() {
-
-	return "it is already signed!";
 };

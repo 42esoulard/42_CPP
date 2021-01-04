@@ -6,7 +6,7 @@
 /*   By: esoulard <esoulard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/02 18:09:20 by esoulard          #+#    #+#             */
-/*   Updated: 2021/01/04 09:44:52 by esoulard         ###   ########.fr       */
+/*   Updated: 2021/01/04 15:05:48 by esoulard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include <iostream>
 #include "Bureaucrat.hpp"
+#include "customException.hpp"
 
 # define YES 	1
 # define NO 	0
@@ -38,22 +39,24 @@ class Form {
 
 		void				beSigned(Bureaucrat const *bureaucrat);
 
-		class GradeTooHighException : public std::exception {
-			
+		class GradeTooHighException : public customException {
 			public:
-				virtual char const *what() const throw();
+				GradeTooHighException(std::string const &str) : 
+					customException(str + ": grade is too high!") {};
 		};
 
-		class GradeTooLowException : public std::exception {
-			
+		class GradeTooLowException : public customException {
 			public:
-				virtual char const *what() const throw();
+				GradeTooLowException(std::string const &str) : 
+					customException(str + ": grade is too low!") {};
 		};
 
-		class AlreadySignedException : public std::exception {
+
+		class AlreadySignedException : public customException {
 			
 			public:
-				virtual char const *what() const throw();
+				AlreadySignedException(std::string const &str) : 
+					customException(str + ": it has already been signed") {};
 		};	
 
 
