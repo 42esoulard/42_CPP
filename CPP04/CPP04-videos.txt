@@ -1,3 +1,6 @@
+/!\ SI UNE CLASSE EST POLYMORPHE
+LE DESTRUCTEUR DOIT ETRE VIRTUAL
+
 POLYMORPHISME PAR SOUS-TYPAGE
 
 Si class sampleB hérite de class sample A, class sample B est une class sampleA.
