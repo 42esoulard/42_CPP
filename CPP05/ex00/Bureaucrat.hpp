@@ -6,7 +6,7 @@
 /*   By: esoulard <esoulard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/02 15:50:46 by esoulard          #+#    #+#             */
-/*   Updated: 2021/01/02 20:01:48 by esoulard         ###   ########.fr       */
+/*   Updated: 2021/01/04 14:50:53 by esoulard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #define BUREAUCRAT_HPP
 
 #include <iostream>
+#include "customException.hpp"
 
 class Bureaucrat {
 	
@@ -30,16 +31,16 @@ class Bureaucrat {
 		void				incrementGrade(void);
 		void				decrementGrade(void);
 
-		class GradeTooHighException : public std::exception {
-			
+		class GradeTooHighException : public customException {
 			public:
-				virtual char const *what() const throw();
+				GradeTooHighException(std::string const &str) : 
+					customException(str + ": grade is too high!") {};
 		};
 
-		class GradeTooLowException : public std::exception {
-			
+		class GradeTooLowException : public customException {
 			public:
-				virtual char const *what() const throw();
+				GradeTooLowException(std::string const &str) : 
+					customException(str + ": grade is too low!") {};
 		};
 
 	private:

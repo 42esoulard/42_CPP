@@ -1,10 +1,10 @@
 
-SRCS		= main.cpp Bureaucrat.cpp
+SRCS		= main.cpp customException.cpp Bureaucrat.cpp
 
 OBJS		= ${SRCS:.cpp=.o}
 
 INC_DIR		= .
-INCLUDES	= Bureaucrat.hpp
+INCLUDES	= customException.hpp Bureaucrat.hpp
 
 CPP			= clang++
 CFLAGS		= -Wall -Wextra -Werror
