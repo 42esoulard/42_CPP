@@ -14,6 +14,7 @@ on appelera Cat::Leg.
 --------------------------------------------------
 
 EXCEPTIONS
+http://peterforgacs.github.io/2017/06/25/Custom-C-Exceptions-For-Beginners/
 
 a utiliser pour les erreurs non prévues par le fonctionnement normal du programme (car consomme bcp de ressources systeme)
 

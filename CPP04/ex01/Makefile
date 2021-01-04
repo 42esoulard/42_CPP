@@ -11,7 +11,7 @@ INCLUDES	= wasteland.h AWeapon.hpp PlasmaRifle.hpp PowerFist.hpp \
 CPP			= clang++
 CFLAGS		= -Wall -Wextra -Werror
 
-NAME		= Polymorph
+NAME		= Wasteland
 
 
 .c.o:		${SRCS} ${INCLUDES}

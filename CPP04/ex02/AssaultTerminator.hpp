@@ -6,7 +6,7 @@
 /*   By: esoulard <esoulard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/29 11:36:14 by esoulard          #+#    #+#             */
-/*   Updated: 2020/12/30 13:41:58 by esoulard         ###   ########.fr       */
+/*   Updated: 2021/01/04 19:42:26 by esoulard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class AssaultTerminator : public ISpaceMarine {
 		
 		AssaultTerminator(void);
 		AssaultTerminator(AssaultTerminator const &src);
-		~AssaultTerminator(void);
+		virtual ~AssaultTerminator(void);
 
 		AssaultTerminator & operator=(AssaultTerminator const &rhs);
 

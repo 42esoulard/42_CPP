@@ -6,7 +6,7 @@
 /*   By: esoulard <esoulard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/29 11:19:24 by esoulard          #+#    #+#             */
-/*   Updated: 2020/12/29 14:55:49 by esoulard         ###   ########.fr       */
+/*   Updated: 2021/01/04 19:37:43 by esoulard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ class TacticalMarine : public ISpaceMarine {
 	public:
 		TacticalMarine(void);
 		TacticalMarine(TacticalMarine const &src);
-		~TacticalMarine(void);
+		virtual ~TacticalMarine(void);
 
 		TacticalMarine & operator=(TacticalMarine const &rhs);
 

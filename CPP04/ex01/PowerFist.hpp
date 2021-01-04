@@ -6,7 +6,7 @@
 /*   By: esoulard <esoulard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 14:21:32 by esoulard          #+#    #+#             */
-/*   Updated: 2020/12/28 19:04:53 by esoulard         ###   ########.fr       */
+/*   Updated: 2021/01/04 18:57:54 by esoulard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ class PowerFist : public AWeapon {
 	public:
 		PowerFist(void);
 		PowerFist(PowerFist const &src);
-		~PowerFist(void);
+		virtual ~PowerFist(void);
 
 		PowerFist &		operator=(PowerFist const &rhs);
 		

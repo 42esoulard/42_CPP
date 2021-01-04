@@ -6,7 +6,7 @@
 /*   By: esoulard <esoulard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 12:30:32 by esoulard          #+#    #+#             */
-/*   Updated: 2020/12/28 13:03:57 by esoulard         ###   ########.fr       */
+/*   Updated: 2021/01/04 18:56:17 by esoulard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ class Cat : public Victim {
 	public:
 		Cat(std::string const &name);
 		Cat(Cat const &src);
-		~Cat(void);
+		virtual ~Cat(void);
 
 		Cat & 			operator=(Cat const &rhs);
 		virtual void 	getPolymorphed(void) const;

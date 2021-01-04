@@ -6,7 +6,7 @@
 /*   By: esoulard <esoulard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 16:23:36 by esoulard          #+#    #+#             */
-/*   Updated: 2020/12/31 12:11:33 by esoulard         ###   ########.fr       */
+/*   Updated: 2021/01/04 19:44:07 by esoulard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ class Character : public ICharacter {
 	public:
 		Character(std::string const &name);
 		Character(Character const &src);
-		~Character(void);
+		virtual ~Character(void);
 
 		Character & operator=(Character const &rhs);
 

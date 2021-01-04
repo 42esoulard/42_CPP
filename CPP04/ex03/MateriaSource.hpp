@@ -6,7 +6,7 @@
 /*   By: esoulard <esoulard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/31 10:24:59 by esoulard          #+#    #+#             */
-/*   Updated: 2020/12/31 12:12:27 by esoulard         ###   ########.fr       */
+/*   Updated: 2021/01/04 19:44:23 by esoulard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ class MateriaSource : public IMateriaSource {
 	public:
 		MateriaSource(void);
 		MateriaSource(MateriaSource const &src);
-		~MateriaSource(void);
+		virtual ~MateriaSource(void);
 
 		MateriaSource & operator=(MateriaSource const &rhs);
 
