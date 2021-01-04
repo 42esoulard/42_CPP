@@ -6,7 +6,7 @@
 /*   By: esoulard <esoulard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 10:23:39 by esoulard          #+#    #+#             */
-/*   Updated: 2021/01/04 12:29:20 by esoulard         ###   ########.fr       */
+/*   Updated: 2021/01/04 15:47:58 by esoulard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,4 @@ void 	RobotomyRequestForm::execute(Bureaucrat const & executor) const {
 		std::cout << "Robotomy failed" << std::endl;
 		std::cout << "*Sad beep boop*" << std::endl;
 	}
-
-
 };

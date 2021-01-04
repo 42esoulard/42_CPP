@@ -6,7 +6,7 @@
 /*   By: esoulard <esoulard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/02 15:50:46 by esoulard          #+#    #+#             */
-/*   Updated: 2021/01/04 15:20:45 by esoulard         ###   ########.fr       */
+/*   Updated: 2021/01/04 15:47:43 by esoulard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ class Bureaucrat {
 				GradeTooLowException(std::string const &str) : 
 					customException(str + ": grade is too low!") {};
 		};
+		
 	private:
 		
 		Bureaucrat(void);
