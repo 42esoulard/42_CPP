@@ -1,14 +1,14 @@
 
 SRCS		= main.cpp customException.cpp Bureaucrat.cpp AForm.cpp \
-				ShrubberyCreationForm.cpp RobotomyRequestForm.cpp \
-				PresidentialPardonForm.cpp
+			ShrubberyCreationForm.cpp RobotomyRequestForm.cpp \
+			PresidentialPardonForm.cpp Intern.cpp
 
 OBJS		= ${SRCS:.cpp=.o}
 
 INC_DIR		= .
 INCLUDES	= customException.hpp Bureaucrat.hpp AForm.hpp \
-				ShrubberyCreationForm.hpp RobotomyRequestForm.hpp \
-				PresidentialPardonForm.hpp
+			ShrubberyCreationForm.hpp RobotomyRequestForm.hpp \
+			PresidentialPardonForm.hpp Intern.hpp
 
 CPP			= clang++
 CFLAGS		= -Wall -Wextra -Werror -std=c++98
