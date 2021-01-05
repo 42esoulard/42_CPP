@@ -7,7 +7,7 @@ INC_DIR		= .
 INCLUDES	= Sorcerer.hpp Victim.hpp Peon.hpp Cat.hpp
 
 CPP			= clang++
-CFLAGS		= -Wall -Wextra -Werror
+CFLAGS		= -Wall -Wextra -Werror -std=c++98
 
 NAME		= Polymorph
 

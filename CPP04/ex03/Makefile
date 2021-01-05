@@ -7,7 +7,7 @@ INC_DIR		= .
 INCLUDES	= AMateria.hpp Character.hpp Cure.hpp Ice.hpp ICharacter.hpp IMateriaSource.hpp MateriaSource.hpp
 
 CPP			= clang++
-CFLAGS		= -Wall -Wextra -Werror
+CFLAGS		= -Wall -Wextra -Werror -std=c++98
 
 NAME		= Materia
 

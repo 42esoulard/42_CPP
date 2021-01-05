@@ -7,7 +7,7 @@ INC_DIR		= .
 INCLUDES	= customException.hpp Bureaucrat.hpp Form.hpp
 
 CPP			= clang++
-CFLAGS		= -Wall -Wextra -Werror
+CFLAGS		= -Wall -Wextra -Werror -std=c++98
 
 NAME		= Bureaucrat
 

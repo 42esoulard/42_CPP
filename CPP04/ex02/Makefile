@@ -7,7 +7,7 @@ INC_DIR		= .
 INCLUDES	= ISpaceMarine.hpp ISquad.hpp AssaultTerminator.hpp TacticalMarine.hpp Squad.hpp
 
 CPP			= clang++
-CFLAGS		= -Wall -Wextra -Werror
+CFLAGS		= -Wall -Wextra -Werror -std=c++98
 
 NAME		= Squad
 

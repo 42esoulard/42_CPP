@@ -9,7 +9,7 @@ INCLUDES	= wasteland.h AWeapon.hpp PlasmaRifle.hpp PowerFist.hpp \
 				Character.hpp Enemy.hpp RadScorpion.hpp SuperMutant.hpp
 
 CPP			= clang++
-CFLAGS		= -Wall -Wextra -Werror
+CFLAGS		= -Wall -Wextra -Werror -std=c++98
 
 NAME		= Wasteland
 
