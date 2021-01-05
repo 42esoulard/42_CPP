@@ -6,7 +6,7 @@
 /*   By: esoulard <esoulard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/02 18:09:20 by esoulard          #+#    #+#             */
-/*   Updated: 2021/01/04 15:21:02 by esoulard         ###   ########.fr       */
+/*   Updated: 2021/01/05 15:18:35 by esoulard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ class AForm {
 		
 		AForm(std::string const &name, int const &sGrade, int const eGrade, std::string const &target);
 		AForm(AForm const &src);
-		~AForm(void);
+		virtual ~AForm(void);
 
 		AForm & operator=(AForm const &rhs);
 

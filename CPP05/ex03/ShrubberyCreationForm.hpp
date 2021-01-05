@@ -6,7 +6,7 @@
 /*   By: esoulard <esoulard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 10:22:20 by esoulard          #+#    #+#             */
-/*   Updated: 2021/01/04 11:42:15 by esoulard         ###   ########.fr       */
+/*   Updated: 2021/01/05 15:18:53 by esoulard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ class ShrubberyCreationForm : public AForm {
 	
 	public:
 		ShrubberyCreationForm(std::string const &target);
-		~ShrubberyCreationForm(void);
+		virtual ~ShrubberyCreationForm(void);
 
 		virtual void execute(Bureaucrat const & executor) const;
 

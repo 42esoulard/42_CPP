@@ -6,7 +6,7 @@
 /*   By: esoulard <esoulard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 12:32:44 by esoulard          #+#    #+#             */
-/*   Updated: 2021/01/05 13:38:33 by esoulard         ###   ########.fr       */
+/*   Updated: 2021/01/05 15:16:44 by esoulard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,30 @@ Intern & Intern::operator=(Intern const &rhs) {
 	return *this;
 };
 
+
+AForm 	*Intern::shrubberyFactory(std::string const &target) {
+
+	return new ShrubberyCreationForm(target);
+};
+
+AForm 	*Intern::robotomyFactory(std::string const &target) {
+
+	return new RobotomyRequestForm(target);
+};
+
+AForm 	*Intern::presidentialFactory(std::string const &target) {
+
+	return new PresidentialPardonForm(target);
+};
+
+
 AForm 	*Intern::makeForm(std::string const &formName, std::string const &target) {
 
 	for (int i = 0; i < 3; i++) {
 
-		if (formName.compare(formNames[i]) == 0) {
+		if (formName.compare(_formNames[i]) == 0) {
 			std::cout << "Intern creates " << formName << " form." << std::endl;
-			return new formConstr[i](target);
+			return (this->*_formConstr[i])(target);
 		}
 	}
 	throw Intern::FormUnknownException(formName);

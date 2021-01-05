@@ -6,7 +6,7 @@
 /*   By: esoulard <esoulard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 12:32:53 by esoulard          #+#    #+#             */
-/*   Updated: 2021/01/05 13:59:13 by esoulard         ###   ########.fr       */
+/*   Updated: 2021/01/05 15:30:12 by esoulard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,16 +37,20 @@ class Intern {
 					customException("Intern couldn't create " + str + ": form unknown!") {};
 		};
 
+		AForm 	*shrubberyFactory(std::string const &target);
+		AForm 	*robotomyFactory(std::string const &target);
+		AForm 	*presidentialFactory(std::string const &target);
 
 	private:
 		typedef AForm* (Intern::*_formC)(std::string const &);
 	
-		_formC 	_formConstr[3] = 	{	&PresidentialPardonForm::PresidentialPardonForm, 
-										&RobotomyRequestForm::RobotomyRequestForm,
-										&ShrubberyCreationForm::ShrubberyCreationForm
-									};
+		_formC 		_formConstr[3] 	= 	{	
+											&Intern::shrubberyFactory, 
+											&Intern::robotomyFactory,
+											&Intern::presidentialFactory
+										};
 		
-		std::string	_formNames[3] = {"presidential pardon", "robotomy request", "shrubbery creation"};
+		std::string	_formNames[3] 	= {"shrubbery creation", "robotomy request", "presidential pardon"};
 
 
 };

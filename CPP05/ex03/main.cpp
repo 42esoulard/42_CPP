@@ -6,7 +6,7 @@
 /*   By: esoulard <esoulard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/02 15:51:44 by esoulard          #+#    #+#             */
-/*   Updated: 2021/01/05 13:36:52 by esoulard         ###   ########.fr       */
+/*   Updated: 2021/01/05 15:31:28 by esoulard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,12 @@ int main(void) {
 			std::cout << "---------SHRUBBERY CREATION FORM----------" << std::endl << std::endl;
 
 			aFreeForm = someRandomIntern.makeForm("shrubbery creation", "MyLoveForBobRoss");
-			std::cout << aFreeForm << std::endl;
+			std::cout << *aFreeForm << std::endl;
 		
-			bureaucrat[i].signForm(aFreeForm);
-			std::cout << aFreeForm << std::endl;
-			bureaucrat[i].executeForm(aFreeForm);
-			std::cout << aFreeForm << std::endl;
+			bureaucrat[i].signForm(*aFreeForm);
+			std::cout << *aFreeForm << std::endl;
+			bureaucrat[i].executeForm(*aFreeForm);
+			std::cout << *aFreeForm << std::endl;
 
 
 			delete aFreeForm;
@@ -63,32 +63,32 @@ int main(void) {
 			std::cout << "---------ROBOTOMY REQUEST FORM----------" << std::endl << std::endl;
 			
 			aFreeForm = someRandomIntern.makeForm("robotomy request", "Bender");
-			std::cout << aFreeForm << std::endl;
+			std::cout << *aFreeForm << std::endl;
 		
-			bureaucrat[i].signForm(aFreeForm);
-			std::cout << aFreeForm << std::endl;
-			bureaucrat[i].executeForm(aFreeForm);
-			std::cout << aFreeForm << std::endl;
+			bureaucrat[i].signForm(*aFreeForm);
+			std::cout << *aFreeForm << std::endl;
+			bureaucrat[i].executeForm(*aFreeForm);
+			std::cout << *aFreeForm << std::endl;
 			
 			delete aFreeForm;
 			std::cout << std::endl;
 			std::cout << "---------PRESIDENTIAL PARDON FORM----------" << std::endl << std::endl;
 			
 			aFreeForm = someRandomIntern.makeForm("presidential pardon", "Julian Assange");
-			std::cout << aFreeForm << std::endl;
+			std::cout << *aFreeForm << std::endl;
 		
 			std::cout << std::endl;
-			bureaucrat[i].signForm(aFreeForm);
-			std::cout << aFreeForm << std::endl;
-			bureaucrat[i].executeForm(aFreeForm);
-			std::cout << aFreeForm << std::endl;
+			bureaucrat[i].signForm(*aFreeForm);
+			std::cout << *aFreeForm << std::endl;
+			bureaucrat[i].executeForm(*aFreeForm);
+			std::cout << *aFreeForm << std::endl;
 			
 			delete aFreeForm;
 			std::cout << std::endl;
 			std::cout << "---------A BAD FORM----------" << std::endl << std::endl;
 			
 			aFreeForm = someRandomIntern.makeForm("hehehe im a bad form", "COTTON EYED JOE");
-			std::cout << aFreeForm << std::endl;
+			std::cout << *aFreeForm << std::endl;
 		
 			delete aFreeForm;
 		}
