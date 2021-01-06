@@ -48,7 +48,7 @@ Learning CPP basics.
     - Conversions (explicit vs implicit)
     - Reinterpretation (conversion identitaire)
     - Demotion from const to non-const
-  -Casts in C++
+  - Casts in C++
     - Upcast vs Downcast
     - Static cast
     - Dynamic cast
