@@ -6,7 +6,7 @@
 /*   By: esoulard <esoulard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/02 15:50:46 by esoulard          #+#    #+#             */
-/*   Updated: 2021/01/04 15:47:43 by esoulard         ###   ########.fr       */
+/*   Updated: 2021/01/06 11:16:18 by esoulard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 #define BUREAUCRAT_HPP
 
 #include <iostream>
-#include "AForm.hpp"
+#include "Form.hpp"
 #include "customException.hpp"
 
-class AForm;
+class Form;
 
 class Bureaucrat {
 	
@@ -30,12 +30,12 @@ class Bureaucrat {
 		Bureaucrat & operator=(Bureaucrat const &rhs);
 
 		std::string const 	&getName(void) const;
-		int 		const 	&getGrade(void) const;
+		int 		 		getGrade(void) const;
 		void				incrementGrade(void);
 		void				decrementGrade(void);
 
-		void				signForm(AForm &form) const;
-		void 				executeForm(AForm const & form);
+		void				signForm(Form &form) const;
+		void 				executeForm(Form const & form);
 
 
 		class GradeTooHighException : public customException {

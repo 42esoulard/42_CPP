@@ -6,7 +6,7 @@
 /*   By: esoulard <esoulard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 12:32:44 by esoulard          #+#    #+#             */
-/*   Updated: 2021/01/05 15:16:44 by esoulard         ###   ########.fr       */
+/*   Updated: 2021/01/06 11:14:47 by esoulard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,23 +36,23 @@ Intern & Intern::operator=(Intern const &rhs) {
 };
 
 
-AForm 	*Intern::shrubberyFactory(std::string const &target) {
+Form 	*Intern::shrubberyFactory(std::string const &target) {
 
 	return new ShrubberyCreationForm(target);
 };
 
-AForm 	*Intern::robotomyFactory(std::string const &target) {
+Form 	*Intern::robotomyFactory(std::string const &target) {
 
 	return new RobotomyRequestForm(target);
 };
 
-AForm 	*Intern::presidentialFactory(std::string const &target) {
+Form 	*Intern::presidentialFactory(std::string const &target) {
 
 	return new PresidentialPardonForm(target);
 };
 
 
-AForm 	*Intern::makeForm(std::string const &formName, std::string const &target) {
+Form 	*Intern::makeForm(std::string const &formName, std::string const &target) {
 
 	for (int i = 0; i < 3; i++) {
 

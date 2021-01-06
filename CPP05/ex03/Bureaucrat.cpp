@@ -6,7 +6,7 @@
 /*   By: esoulard <esoulard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/02 15:51:10 by esoulard          #+#    #+#             */
-/*   Updated: 2021/01/04 15:35:03 by esoulard         ###   ########.fr       */
+/*   Updated: 2021/01/06 11:15:23 by esoulard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ std::string const 	&Bureaucrat::getName(void) const {
 	return this->_name;
 };
 
-int 		const 	&Bureaucrat::getGrade(void) const {
+int 		 		Bureaucrat::getGrade(void) const {
 
 	return this->_grade;
 };
@@ -82,7 +82,7 @@ void				Bureaucrat::decrementGrade(void) {
 	std::cout << "Grade successfully decremented!" << std::endl;
 };
 
-void		Bureaucrat::signForm(AForm &form) const {
+void		Bureaucrat::signForm(Form &form) const {
 
 	std::cout << "Bureaucrat " << _name << " attempts to sign form "
 	<< form.getName() << "..." << std::endl;
@@ -92,7 +92,7 @@ void		Bureaucrat::signForm(AForm &form) const {
 };
 
 
-void 		Bureaucrat::executeForm(AForm const & form) {
+void 		Bureaucrat::executeForm(Form const & form) {
 
 	form.tryExec(*this);
 	std::cout << _name << " executed " << form.getName() << std::endl;

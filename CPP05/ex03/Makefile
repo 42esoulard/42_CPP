@@ -1,12 +1,12 @@
 
-SRCS		= main.cpp customException.cpp Bureaucrat.cpp AForm.cpp \
+SRCS		= main.cpp customException.cpp Bureaucrat.cpp Form.cpp \
 			ShrubberyCreationForm.cpp RobotomyRequestForm.cpp \
 			PresidentialPardonForm.cpp Intern.cpp
 
 OBJS		= ${SRCS:.cpp=.o}
 
 INC_DIR		= .
-INCLUDES	= customException.hpp Bureaucrat.hpp AForm.hpp \
+INCLUDES	= customException.hpp Bureaucrat.hpp Form.hpp \
 			ShrubberyCreationForm.hpp RobotomyRequestForm.hpp \
 			PresidentialPardonForm.hpp Intern.hpp
 

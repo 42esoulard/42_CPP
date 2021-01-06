@@ -6,7 +6,7 @@
 /*   By: esoulard <esoulard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 10:53:17 by esoulard          #+#    #+#             */
-/*   Updated: 2020/12/28 14:30:40 by esoulard         ###   ########.fr       */
+/*   Updated: 2021/01/05 20:01:36 by esoulard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,12 @@ Sorcerer & 			Sorcerer::operator=(Sorcerer const &rhs) {
 	return *this;
 };
 
-std::string const 	Sorcerer::getName(void) const {
+std::string const 	&Sorcerer::getName(void) const {
 	
 	return this->_name;
 };
 
-std::string const 	Sorcerer::getTitle(void) const {
+std::string const 	&Sorcerer::getTitle(void) const {
 	
 	return this->_title;
 };

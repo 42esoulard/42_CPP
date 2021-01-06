@@ -6,7 +6,7 @@
 /*   By: esoulard <esoulard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 10:53:41 by esoulard          #+#    #+#             */
-/*   Updated: 2020/12/28 14:32:18 by esoulard         ###   ########.fr       */
+/*   Updated: 2021/01/05 20:01:49 by esoulard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ Victim & 			Victim::operator=(Victim const &rhs) {
 	return *this;
 };
 
-std::string const 	Victim::getName(void) const {
+std::string const 	&Victim::getName(void) const {
 	
 	return this->_name;
 };

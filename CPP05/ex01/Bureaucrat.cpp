@@ -6,7 +6,7 @@
 /*   By: esoulard <esoulard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/02 15:51:10 by esoulard          #+#    #+#             */
-/*   Updated: 2021/01/04 15:19:12 by esoulard         ###   ########.fr       */
+/*   Updated: 2021/01/06 09:24:14 by esoulard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ std::string const 	&Bureaucrat::getName(void) const {
 	return this->_name;
 };
 
-int 		const 	&Bureaucrat::getGrade(void) const {
+int 		 		Bureaucrat::getGrade(void) const {
 
 	return this->_grade;
 };

@@ -6,7 +6,7 @@
 /*   By: esoulard <esoulard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/02 15:50:46 by esoulard          #+#    #+#             */
-/*   Updated: 2021/01/04 14:56:21 by esoulard         ###   ########.fr       */
+/*   Updated: 2021/01/06 09:24:08 by esoulard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ class Bureaucrat {
 		Bureaucrat & operator=(Bureaucrat const &rhs);
 
 		std::string const 	&getName(void) const;
-		int 		const 	&getGrade(void) const;
+		int 		 		getGrade(void) const;
 		void				incrementGrade(void);
 		void				decrementGrade(void);
 

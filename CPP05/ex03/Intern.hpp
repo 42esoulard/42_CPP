@@ -6,7 +6,7 @@
 /*   By: esoulard <esoulard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 12:32:53 by esoulard          #+#    #+#             */
-/*   Updated: 2021/01/05 15:30:12 by esoulard         ###   ########.fr       */
+/*   Updated: 2021/01/06 11:14:54 by esoulard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #define INTERN_HPP
 
 #include <iostream>
-#include "AForm.hpp"
+#include "Form.hpp"
 #include "PresidentialPardonForm.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
@@ -29,7 +29,7 @@ class Intern {
 
 		Intern &operator=(Intern const &rhs);
 
-		AForm 	*makeForm(std::string const &formName, std::string const &target);
+		Form 	*makeForm(std::string const &formName, std::string const &target);
 
 		class FormUnknownException : public customException {
 			public:
@@ -37,12 +37,12 @@ class Intern {
 					customException("Intern couldn't create " + str + ": form unknown!") {};
 		};
 
-		AForm 	*shrubberyFactory(std::string const &target);
-		AForm 	*robotomyFactory(std::string const &target);
-		AForm 	*presidentialFactory(std::string const &target);
+		Form 	*shrubberyFactory(std::string const &target);
+		Form 	*robotomyFactory(std::string const &target);
+		Form 	*presidentialFactory(std::string const &target);
 
 	private:
-		typedef AForm* (Intern::*_formC)(std::string const &);
+		typedef Form* (Intern::*_formC)(std::string const &);
 	
 		_formC 		_formConstr[3] 	= 	{	
 											&Intern::shrubberyFactory, 

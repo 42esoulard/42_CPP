@@ -6,7 +6,7 @@
 /*   By: esoulard <esoulard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 15:35:17 by esoulard          #+#    #+#             */
-/*   Updated: 2020/12/28 19:04:35 by esoulard         ###   ########.fr       */
+/*   Updated: 2021/01/05 20:19:30 by esoulard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,6 @@ void 		SuperMutant::takeDamage(int damage) {
  	damage -= 3;
 	if (damage > 0)
 		this->_hitPoints -= damage;
-	std::cout << "SuperMutant lost " << damage << "! Enemy now has " << this->_hitPoints << "left!" << std::endl;
+	std::cout << "SuperMutant lost " << damage << "HP! Enemy now has " << this->_hitPoints << "HP left!" << std::endl;
 };
 

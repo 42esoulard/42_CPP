@@ -6,7 +6,7 @@
 /*   By: esoulard <esoulard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 15:45:28 by esoulard          #+#    #+#             */
-/*   Updated: 2020/12/28 19:05:27 by esoulard         ###   ########.fr       */
+/*   Updated: 2021/01/05 20:13:47 by esoulard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@ class Character {
 
 		Character & operator=(Character const &rhs);
 
-		void 		recoverAP(void);
-		void 		equip(AWeapon*);
-		void 		attack(Enemy*&);
-		std::string getName(void) const;
-		int			getAP(void) const;
-		AWeapon		*getWeapon(void) const;
+		void 				recoverAP(void);
+		void 				equip(AWeapon*);
+		void 				attack(Enemy*&);
+		std::string const 	&getName(void) const;
+		int				 	getAP(void) const;
+		AWeapon			 	*getWeapon(void) const;
 
 	private:
 		Character(void);

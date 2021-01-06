@@ -6,7 +6,7 @@
 /*   By: esoulard <esoulard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 12:21:32 by esoulard          #+#    #+#             */
-/*   Updated: 2021/01/04 12:29:28 by esoulard         ###   ########.fr       */
+/*   Updated: 2021/01/06 12:10:10 by esoulard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,19 @@
 #include <iostream>
 
 PresidentialPardonForm::PresidentialPardonForm(std::string const &target) :
-AForm("PPF", 25, 5, target) {
+Form("PPF", 25, 5, target) {
 
 	std::cout << "[PresidentialPardonForm] Default constructor called" << std::endl;
 };
 
-PresidentialPardonForm::PresidentialPardonForm(void) {
+PresidentialPardonForm::PresidentialPardonForm(void) :
+Form("PPF", 25, 5, "") {
 
 	std::cout << "[PresidentialPardonForm] Default constructor called" << std::endl;
 };
 
-PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm const &src) {
+PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm const &src) :
+Form(src) {
 
 	std::cout << "[PresidentialPardonForm] Copy constructor called" << std::endl;
 	*this = src;
@@ -43,5 +45,5 @@ PresidentialPardonForm & PresidentialPardonForm::operator=(PresidentialPardonFor
 
 void 	PresidentialPardonForm::execute(Bureaucrat const & executor) const {
 	
-	std::cout << _target << " has been pardoned by Zaphod Beeblebrox" << std::endl;
+	std::cout << getTarget() << " has been pardoned by Zaphod Beeblebrox" << std::endl;
 };

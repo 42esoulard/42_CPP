@@ -6,7 +6,7 @@
 /*   By: esoulard <esoulard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 13:50:36 by esoulard          #+#    #+#             */
-/*   Updated: 2021/01/04 18:57:28 by esoulard         ###   ########.fr       */
+/*   Updated: 2021/01/05 20:10:34 by esoulard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ class AWeapon {
 		
 		AWeapon & 	operator=(AWeapon const &rhs);
 
-		std::string 	getName(void) const;
-		int 			getAPCost(void) const;
-		int 			getDamage(void) const;
-		virtual void 	attack(void) const = 0;
+		std::string const 	&getName(void) const;
+		int 				getAPCost(void) const;
+		int 				getDamage(void) const;
+		virtual void 		attack(void) const = 0;
 
 	protected:
 		AWeapon(void);

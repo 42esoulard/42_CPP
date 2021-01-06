@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AForm.hpp                                          :+:      :+:    :+:   */
+/*   Form.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: esoulard <esoulard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/02 18:09:20 by esoulard          #+#    #+#             */
-/*   Updated: 2021/01/05 15:18:35 by esoulard         ###   ########.fr       */
+/*   Updated: 2021/01/06 12:32:22 by esoulard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef AFORM_HPP
-#define AFORM_HPP
+#ifndef FORM_HPP
+#define FORM_HPP
 
 #include <iostream>
 #include "Bureaucrat.hpp"
@@ -22,21 +22,20 @@
 
 class Bureaucrat;
 
-class AForm {
+class Form {
 	
 	public:
 		
-		AForm(std::string const &name, int const &sGrade, int const eGrade, std::string const &target);
-		AForm(AForm const &src);
-		virtual ~AForm(void);
-
-		AForm & operator=(AForm const &rhs);
-
+		Form(std::string const &name, int const &sGrade, int const eGrade, std::string const &target);
+		Form(Form const &src);
+		virtual ~Form(void);
 
 		std::string const 	&getName(void) const;
 		int 				getSignedStatus(void) const;
 		int const			&getSigningGrade(void) const;
 		int const 			&getExecGrade(void) const;
+		std::string const 	&getTarget(void) const;
+
 
 		void				beSigned(Bureaucrat const *bureaucrat);
 
@@ -71,9 +70,11 @@ class AForm {
 
 
 
-	protected:
+	private:
 
-		AForm(void);
+		Form(void);
+		Form & operator=(Form const &rhs);
+		
 		std::string const 	_name;
 		int 				_signed;
 		int const			_signGrade;
@@ -81,6 +82,6 @@ class AForm {
 		std::string const	_target;
 };
 
-std::ostream & operator<<(std::ostream &o, AForm const &rhs);
+std::ostream & operator<<(std::ostream &o, Form const &rhs);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: esoulard <esoulard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 13:50:17 by esoulard          #+#    #+#             */
-/*   Updated: 2020/12/28 19:05:42 by esoulard         ###   ########.fr       */
+/*   Updated: 2021/01/05 20:10:56 by esoulard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,17 +43,17 @@ AWeapon & AWeapon::operator=(AWeapon const &rhs) {
 	return *this;
 };
 
-std::string AWeapon::getName(void) const {
+std::string const 	&AWeapon::getName(void) const {
 
 	return this->_name;
 };
 
-int 		AWeapon::getAPCost(void) const {
+int 	 			AWeapon::getAPCost(void) const {
 
 	return this->_apCost;
 };
 
-int 		AWeapon::getDamage(void) const {
+int 	 			AWeapon::getDamage(void) const {
 
 	return this->_damage;
 };

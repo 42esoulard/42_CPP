@@ -6,13 +6,13 @@
 /*   By: esoulard <esoulard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/02 15:51:44 by esoulard          #+#    #+#             */
-/*   Updated: 2021/01/05 15:31:28 by esoulard         ###   ########.fr       */
+/*   Updated: 2021/01/06 11:24:02 by esoulard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Intern.hpp"
 #include "Bureaucrat.hpp"
-#include "AForm.hpp"
+#include "Form.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
@@ -28,7 +28,7 @@ int main(void) {
 								};
 
 	Intern	someRandomIntern;
-	AForm	*aFreeForm;
+	Form	*aFreeForm;
 
 	for (int i = 0; i < 1; i++) {
 

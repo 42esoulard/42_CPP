@@ -6,7 +6,7 @@
 /*   By: esoulard <esoulard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 15:12:17 by esoulard          #+#    #+#             */
-/*   Updated: 2020/12/28 19:05:13 by esoulard         ###   ########.fr       */
+/*   Updated: 2021/01/05 20:12:13 by esoulard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ class Enemy {
 
 		Enemy & operator=(Enemy const &rhs);
 
-		std::string 	getType(void) const;
-		int 			getHP(void) const;
-		virtual void 	takeDamage(int);
+		std::string const 	&getType(void) const;
+		int 	 			getHP(void) const;
+		virtual void 		takeDamage(int);
 
 	protected:
 		Enemy(void);

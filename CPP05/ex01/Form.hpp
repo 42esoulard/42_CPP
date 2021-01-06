@@ -6,7 +6,7 @@
 /*   By: esoulard <esoulard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/02 18:09:20 by esoulard          #+#    #+#             */
-/*   Updated: 2021/01/04 15:05:48 by esoulard         ###   ########.fr       */
+/*   Updated: 2021/01/06 12:27:35 by esoulard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,6 @@ class Form {
 		Form(Form const &src);
 		~Form(void);
 
-		Form & operator=(Form const &rhs);
-
 		std::string const 	&getName(void) const;
 		int 				getSignedStatus(void) const;
 		int const			&getSigningGrade(void) const;
@@ -51,7 +49,6 @@ class Form {
 					customException(str + ": grade is too low!") {};
 		};
 
-
 		class AlreadySignedException : public customException {
 			
 			public:
@@ -63,6 +60,8 @@ class Form {
 	private:
 
 		Form(void);
+		Form & operator=(Form const &rhs);
+		
 		std::string const 	_name;
 		int 				_signed;
 		int const			_signGrade;

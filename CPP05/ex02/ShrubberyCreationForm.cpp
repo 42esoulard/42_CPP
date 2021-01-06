@@ -6,7 +6,7 @@
 /*   By: esoulard <esoulard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 10:23:39 by esoulard          #+#    #+#             */
-/*   Updated: 2021/01/04 15:33:10 by esoulard         ###   ########.fr       */
+/*   Updated: 2021/01/06 12:09:03 by esoulard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,19 @@
 #include <fstream>
 
 ShrubberyCreationForm::ShrubberyCreationForm(std::string const &target) :
-AForm("SCF", 145, 137, target) {
+Form("SCF", 145, 137, target) {
 
 	std::cout << "[ShrubberyCreationForm] Default constructor called" << std::endl;
 };
 
-ShrubberyCreationForm::ShrubberyCreationForm(void) {
+ShrubberyCreationForm::ShrubberyCreationForm(void) :
+Form("SCF", 145, 137, "") {
 
 	std::cout << "[ShrubberyCreationForm] Default constructor called" << std::endl;
 };
 
-ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const &src) {
+ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const &src) :
+Form(src) {
 
 	std::cout << "[ShrubberyCreationForm] Copy constructor called" << std::endl;
 	*this = src;
@@ -44,7 +46,7 @@ ShrubberyCreationForm & ShrubberyCreationForm::operator=(ShrubberyCreationForm c
 
 void 	ShrubberyCreationForm::execute(Bureaucrat const & executor) const {
 	
-	std::ofstream ofs(this->_target + "_shrubbery");
+	std::ofstream ofs(this->getTarget() + "_shrubbery");
 	ofs << std::endl;
 	ofs << "               ,@@@@@@@," << std::endl;
 	ofs << "       ,,,.   ,@@@@@@/@@,  .oo8888o." << std::endl;

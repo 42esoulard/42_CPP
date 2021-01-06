@@ -6,7 +6,7 @@
 /*   By: esoulard <esoulard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 15:12:01 by esoulard          #+#    #+#             */
-/*   Updated: 2020/12/28 18:07:36 by esoulard         ###   ########.fr       */
+/*   Updated: 2021/01/05 20:17:47 by esoulard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,12 @@ Enemy & Enemy::operator=(Enemy const &rhs) {
 	return *this;
 };
 		
-std::string 	Enemy::getType(void) const {
+std::string const	&Enemy::getType(void) const {
 
 	return this->_type;
 };
 
-int 			Enemy::getHP(void) const {
+int 				Enemy::getHP(void) const {
 
 	return this->_hitPoints;
 };
@@ -58,7 +58,7 @@ void 		Enemy::takeDamage(int damage) {
 		this->_hitPoints -= damage;
 		if (this->_hitPoints < 0)
 			this->_hitPoints = 0;
-		std::cout << "RadScorpion lost " << damage << "! Enemy now has " << this->_hitPoints << "left!" << std::endl;
+		std::cout << "RadScorpion lost " << damage << "HP! Enemy now has " << this->_hitPoints << "HP left!" << std::endl;
 	}
 
 };

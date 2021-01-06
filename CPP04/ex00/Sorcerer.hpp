@@ -6,7 +6,7 @@
 /*   By: esoulard <esoulard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 10:52:50 by esoulard          #+#    #+#             */
-/*   Updated: 2020/12/28 14:37:21 by esoulard         ###   ########.fr       */
+/*   Updated: 2021/01/05 20:01:28 by esoulard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ class Sorcerer {
 		~Sorcerer(void);
 
 		Sorcerer & 			operator=(Sorcerer const &rhs);
-		std::string const 	getName(void) const;
-		std::string const 	getTitle(void) const;
+		std::string const 	&getName(void) const;
+		std::string const 	&getTitle(void) const;
 	 	void 				polymorph(Victim const &) const;
 
 	private:
