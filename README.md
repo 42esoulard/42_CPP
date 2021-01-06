@@ -43,4 +43,18 @@ Learning CPP basics.
   - Nested classes
   - Exceptions
 
+**CPP06**
+  - Casts in C
+    - Conversions (explicit vs implicit)
+    - Reinterpretation (conversion identitaire)
+    - Demotion from const to non-const
+  -Casts in C++
+    - Upcast vs Downcast
+    - Static cast
+    - Dynamic cast
+    - Reinterpret cast
+    - Const cast
+    - Cast operator
+    - Explicit
+
 Written in december 2020 - january 2021.

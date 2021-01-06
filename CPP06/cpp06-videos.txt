@@ -1,0 +1,209 @@
+++++++++++++
+CASTS (en C)
+++++++++++++
+
+
+CONVERSIONS
+Explicite vs Implicite
+
+int a = 42;
+double b = a; //implicite
+ou
+double b = (double) a; //explicite
+
+/!\ en cas de conversion vers un type moins précis, ex mettre un double dans un int.. Auquel cas, il est nécessaire d'utiliser un cast explicite pour signaler au compilateur que c'est volontaire et qu'il faut réarranger les bits pour correspondre au nouveau type.
+Il y a un flag qui empeche la compilation en cas de cast implicite et de perte de précision.
+
+-------------------------------------
+
+LA RÉINTERPRÉTATION ou CONVERSION IDENTITAIRE
+(pas de réarrangement des bits)
+
+float a = 420.4564f;
+void *bla = &a;
+ou
+void *b = (void *) &a;
+
+On va vers un type plus général (void * est considéré comme un type général de pointeur).
+
+mais si je fais:
+float a = 420.4564f;
+void *aptr = &a;
+int *bla = aptr;
+ou
+int *bla = (int *) &aptr;
+
+>>> on fera toujours une démotion explicite afin de signifier que ceci est volontaire car.. généralement ça marche pas. On peut mettre une valeur moins générale dans une plus générale mais pas l'inverse, ou alors on précisera bien que c'est voulu avec la syntaxe explicite.
+
+----------------------------------
+DEMOTION DE CONST A NON-CONST
+
+...Faire une démotion explicite sinon le compilo refuse. 
+
+----------------------------------
+--------------------------
+-------------------
+++++++++++++++
+CASTS (en C++)
+++++++++++++++
+
+UPCAST VS DOWNCAST
+
+Child b;
+Parent *a = &b; //ok
+Parent *a = (Parent *) &b; //ok
+
+MAIS jamais 
+child *b = a;
+Eventuellement MAIS c'est une mauvaise idée
+child1 *b = (child1 *) a;
+
+
+---------------------------
+STATIC CAST
+
+int a = 42;
+double b = a;//promotion implicite: ok
+int c = b; //démotion implicite = NON!!
+int d = static_cast<int>(b) //demotion explicite = ok
+//je souhaite faire un static_cast de l'expression b vers le type int
+
+-------
+class Parent {};
+class Child1: public Parent {};
+class Child2: public Parent {};
+class unrelated {};
+
+Child1 a;
+Parent *b = &a; //implicit upcast = ok
+Child1 *c = b; //implicit downcast = NON
+Child2 *d = static_cast<Child2 *>(b); //explicit downcast = ok
+
+unrelated *e = static_cast<Unrelated *>(&a) //Conversion explicite = NON
+
+MAIS jamais 
+child *b = a;
+Eventuellement MAIS c'est une mauvaise idée
+child1 *b = (child1 *) a;
+
+----------------------------------
+DYNAMIC CAST
+
+>>>le seul a avoir lieu à l'execution et non à la compilation
+/!\ peut donc échouer à l'execution, et il faut protéger le code pour ce cas là
+
+>>>ne fonctionne que dans les cas de polymorphisme (il faudra une fonction virtual qqpart)
+
+Child1 a;
+AParent *b = &a;
+
+Child1 *c = dynamic_cast<Child1 *>(b);
+if(c == NULL) {
+	std::cout << "fail" << std::endl;
+}
+else{
+	std::cout << "ok" << std::endl;
+}
+//le type réel est Child1 donc pas de souci
+
+try {
+	Child2 d = dynamic_cast<Child2 &>(*b);
+	std::cout << "ok" << std::endl;
+}
+catch(std::bad_cast &bc) {
+	std::cout << bc.what() << std::endl;
+}
+//le type réel est Child1 et non child2, le cast va échouer à l'execution
+
+>>>Utiliser un dynamic_cast permet donc de checker si le type réel est bien le meme et de renvoyer une erreur au lieu de tout faire planter abominablement.
+
+-------------------------------------------
+REINTERPRET CAST
+
+>>>le cast le plus permissif, permet de caster n'importe quelle adresse vers n'importe quel type.
+
+float a = 420.121f;
+
+void *b = &a;
+int *c = reinterpret_cast<int *>(b);//ça marche mais clairement ça va etre le dawa
+int &d = reinterpret_cast<int &>(b);//ça marche mais clairement ça va etre le dawa
+
+>>>pourra être utile pour retyper un void* vers son type originel MAIS ATTENTION A NE PAS SE PLANTER CAR LE COMPILO LAISSERA PASSER N'IMP
+
+---------------------------------------------
+CONST CAST
+
+in a;
+int const *b = &a;
+int *c = b; //NON
+int *d = const_cast<int *>(b); //OK
+
+---------------------------------------------
+CAST OPERATORS
+
+class Foo {
+	
+	public:
+		Foo(float const v) : _v(v) {}
+
+		float getv() 		{return this->_v;}
+
+		operator float()	{return this->_v;}
+		operator int() 		{return static_cast<int>(this->_v);}
+		
+	private:
+		float _v;
+}
+
+Foo a(420.5565f);
+float b = a;//appellera operator float
+int c = a;//appelera operator int
+
+-----------------------------------------------
+EXPLICIT
+
+class A {};
+class B {};
+
+class C {
+	
+	public:
+				C(A const & _) {return;}
+	   explicit	C(B const & _) {return;}
+}
+
+void f(C const & _) {return;}
+
+f(A());
+f(B());//implicit conversion made impossible with explicit keyword
+
+-------------------------------------------
+
+RESUME
+
+Conversion : pour passer d'un type à l'autre, décalage de bits.
+Conversion identitaire ou réinterprétation : convertion sans réorganisation des bits.
+
+réinterprétations: upcast/downcast: pour naviguer dans une hierarchie verticale de classes, ou en rajoutant const.
+- implicit cast: permet de faire 
+		des conversions des valeurs simples
+		des upcast
+		>>>fait des check sémantiques, fiable au run
+- static_cast: permet de faire
+		des conversions des valeurs simples
+		des upcast 
+		des downcast 
+		>>>fait check sémantique mais peut péter, peut permettre des cast entre branches d'héritages non compatibles. Mais interdit cast entre classes qui n'ont rien à voir
+- dynamic cast: permet de faire
+		- des upcast
+		- des downcast
+		>>>dans le contexte de classes avec une fonction virtual. Check au runtime et permet la gestion d'erreurs propres
+- reinterpret cast:
+		- réinterpretation de type
+		- upcast
+		- downcast
+		>>> /!\ ne check rien, dangereux. Sera surtout utilisé pour requalifier un void * pour lui redonner son type originel.
+- const cast: permet de faire
+		-réinterprétation de qualifier de type
+		>>>sera seulement utilisé pour régler des pb de compatibilité de codes
+(et le c cast qu'on n'utilisera plus en c++)
