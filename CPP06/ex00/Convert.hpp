@@ -6,7 +6,7 @@
 /*   By: esoulard <esoulard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/09 12:22:37 by esoulard          #+#    #+#             */
-/*   Updated: 2021/01/09 13:45:59 by esoulard         ###   ########.fr       */
+/*   Updated: 2021/01/10 15:56:18 by esoulard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,10 @@
 #include <iostream>
 
 #define T_CHAR 		0
-#define T_INT 		1
-#define T_FLOAT 	2
-#define T_DOUBLE 	3
+#define T_DOUBLE 	1
+#define T_INVALID	2
+#define T_NAN 		3
+
 
 class Convert {
 	
@@ -27,37 +28,44 @@ class Convert {
 		Convert(Convert const &src);
 		~Convert(void);
 
-		char const & getCharConv(void) const;
-		int const & getIntConv(void) const;
-		float const & getFloatConv(void) const;
-		double const & getDoubleConv(void) const;
+		//---------GETTERS----------
+		char const 		& getCharConv(void) const;
+		int const 		& getIntConv(void) const;
+		float const 	& getFloatConv(void) const;
+		double const 	& getDoubleConv(void) const;
+		int const 		& getType(void) const;
+
+		std::string 	*getOutput(void) const;
+		//---------------------------
+
 
 	private:
 		Convert(void);
 		Convert & operator=(Convert const &rhs);
 		
-		char 	_charConv;
-		int 	_intConv;
-		float 	_floatConv;
-		double 	_doubleConv;
-		int 	_type;
+		char 		_charConv;
+		int 		_intConv;
+		float 		_floatConv;
+		double 		_doubleConv;
+		int 		_type;
+		std::string *_output;
 
-		int 	parseInput(std::string const &input) const;
+		//-------PARSING--------
+		int 	_parseInput(std::string const &input);
+		int 	_isZero(int idx) const;
 
+		//-------CONVERSION------------
 		void	fromChar(std::string const &input);
-		void	fromInt(std::string const &input);
-		void	fromFloat(std::string const &input);
 		void	fromDouble(std::string const &input);
+		void	fromInvalid(std::string const &input);
 
 		typedef void (Convert::*_convUtils)(std::string const &);
 	
-		_convUtils 	_makeConv[4] 	= 	{	
+		_convUtils 	_makeConv[3] 	= 	{	
 											&Convert::fromChar, 
-											&Convert::fromInt,
-											&Convert::fromFloat,
 											&Convert::fromDouble,
+											&Convert::fromInvalid,
 										};
-
 };
 
 std::ostream & operator<<(std::ostream &o, Convert const &rhs);

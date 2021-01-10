@@ -24,6 +24,6 @@ clean :
 			rm -f ${OBJS}
 
 fclean :	clean
-			rm -f ${NAME} MyLoveForBobRoss_shrubbery
+			rm -f ${NAME} 
 
 re :		fclean all
