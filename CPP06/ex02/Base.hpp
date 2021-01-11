@@ -1,38 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Base.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: esoulard <esoulard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/09 10:53:26 by esoulard          #+#    #+#             */
-/*   Updated: 2021/01/11 17:45:56 by esoulard         ###   ########.fr       */
+/*   Created: 2021/01/11 12:51:37 by esoulard          #+#    #+#             */
+/*   Updated: 2021/01/11 16:56:15 by esoulard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <sstream>
-#include "customException.hpp"
-#include "Convert.hpp"
+#ifndef BASE_HPP
+#define BASE_HPP
 
+class Base {
 
-int main (int ac, char **av) {
+	public:
+		virtual ~Base(void) {};
+};
 
-	if (ac != 2) {
-		std::cerr << "One parameter required!" << std::endl;
-		return 1;
-	}
-
-	try {
-		int type;
-		std::string input(av[1]);
-
-		Convert test(input);
-	    
-	}
-	catch(std::exception &e) {
-		std::cerr << e.what() << std::endl;
-	}
-    
-	return 0;
-}
+#endif

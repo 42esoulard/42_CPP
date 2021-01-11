@@ -113,7 +113,7 @@ try {
 catch(std::bad_cast &bc) {
 	std::cout << bc.what() << std::endl;
 }
-//le type réel est Child1 et non child2, le cast va échouer à l'execution
+//le type réel est Child1 et non child2, le cast va échouer à l'execution 
 
 >>>Utiliser un dynamic_cast permet donc de checker si le type réel est bien le meme et de renvoyer une erreur au lieu de tout faire planter abominablement.
 

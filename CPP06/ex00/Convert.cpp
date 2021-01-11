@@ -6,7 +6,7 @@
 /*   By: esoulard <esoulard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/09 12:38:12 by esoulard          #+#    #+#             */
-/*   Updated: 2021/01/10 16:00:40 by esoulard         ###   ########.fr       */
+/*   Updated: 2021/01/11 18:22:22 by esoulard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,8 @@ int Convert::_parseInput(std::string const &input) {
 	
 	_output = new std::string(input);
 
+
+
 	int idx = 0;
 	if (input[idx] == '-' || input[idx] == '+')
 		idx++;
@@ -125,12 +127,15 @@ int Convert::_parseInput(std::string const &input) {
 		(!_doubleConv && _isZero(idx))) {
 		return T_DOUBLE;
 	}
+	
 
 	// --------------------------
-	//CHECK IF VALID CHAR
+	//CHECK IF VALID AND DISPLAYABLE CHAR
+	
 	if (size == 1 && input[0] >= 33 && input[0] <= 126)
 		return T_CHAR;
 
+	delete _output;
 	throw customException("Invalid argument"); 
 };
 
@@ -145,7 +150,7 @@ int Convert::_isZero(int idx) const {
 		idx++;
 	while (idx < (*_output).size() &&(* _output)[idx] == '0')
 		idx++;
-	if (idx == (*_output).size() || (idx != tmp && !isdigit((*_output)[idx])))
+	if ((idx == (*_output).size() && idx != 0) || (idx != tmp && !isdigit((*_output)[idx]))) 
 		return 1;
 	return 0;
 
@@ -154,6 +159,11 @@ int Convert::_isZero(int idx) const {
 
 //----------------------------------------------
 //----------------CONVERSIONS-------------------
+
+/*
+* static_casts are used for simple conversions.
+* allow for upcast and downcast.
+*/
 
 void	Convert::fromChar(std::string const &input) {
 
@@ -167,12 +177,11 @@ void	Convert::fromChar(std::string const &input) {
 		_floatConv = static_cast<float>(_charConv);
 		_doubleConv = static_cast<double>(_charConv);
 
+		std::cout << *this;
 	}
 	catch(std::exception) {
 		std::cout << "Conversion from char failed" << std::endl;
 	}
-	
-	std::cout << *this;
 
 };
 
@@ -188,12 +197,12 @@ void	Convert::fromDouble(std::string const &input) {
 		if (std::isnan(_doubleConv))
 			_type = T_NAN;
 
+		std::cout << *this;
 	}
 	catch(std::exception) {
 		std::cout << "Conversion from double failed" << std::endl;
 	}
 	
-	std::cout << *this;
 };
 
 void	Convert::fromInvalid(std::string const &input) {

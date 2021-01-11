@@ -6,7 +6,7 @@
 /*   By: esoulard <esoulard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 09:26:09 by esoulard          #+#    #+#             */
-/*   Updated: 2021/01/11 11:21:08 by esoulard         ###   ########.fr       */
+/*   Updated: 2021/01/11 17:44:58 by esoulard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,16 +50,21 @@ void *serialize(void) {
 	std::cout << "ADDR: [" << &data->n << "] " << data->n << std::endl;
 	std::cout << "ADDR: [" << &data->s2 << "] " << data->s2 << std::endl;
 
+	//we send back a void ptr to the data
 	return reinterpret_cast<void *>(data);
-
 }
+
+/*
+* reinterpret_cast is used to requalify
+* a void pointer.
+* /!\ careful, it is very permissive
+*/
 
 Data *deserialize(void *raw) {
 
 	Data *data = reinterpret_cast<Data *>(raw);
 
 	return data;
-
 }
 
 int main(void) {

@@ -1,38 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   identify.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: esoulard <esoulard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/09 10:53:26 by esoulard          #+#    #+#             */
-/*   Updated: 2021/01/11 17:45:56 by esoulard         ###   ########.fr       */
+/*   Created: 2021/01/11 15:35:57 by esoulard          #+#    #+#             */
+/*   Updated: 2021/01/11 16:56:20 by esoulard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <sstream>
-#include "customException.hpp"
-#include "Convert.hpp"
+#ifndef IDENTIFY_HPP
+#define IDENTIFY_HPP
+
+#include "Base.hpp"
+#include "ClassA.hpp"
+#include "ClassB.hpp"
+#include "ClassC.hpp"
+
+typedef Base * (*_tGenClass)(void);
 
 
-int main (int ac, char **av) {
 
-	if (ac != 2) {
-		std::cerr << "One parameter required!" << std::endl;
-		return 1;
-	}
-
-	try {
-		int type;
-		std::string input(av[1]);
-
-		Convert test(input);
-	    
-	}
-	catch(std::exception &e) {
-		std::cerr << e.what() << std::endl;
-	}
-    
-	return 0;
-}
+#endif
