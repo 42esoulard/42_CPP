@@ -9,7 +9,7 @@ INCLUDES	= iter.hpp
 CPP			= clang++
 CFLAGS		= -Wall -Wextra -Werror -std=c++98
 
-NAME		= FunctionTemplates
+NAME		= Iter
 
 
 .c.o:		${SRCS} ${INCLUDES}
