@@ -1,0 +1,162 @@
+TEMPLATES
+
+Syntaxe de c++ qui permet de créer du "code à trous" que le compilo va compléter.
+
+--------------------------------------------------------------
+----------------------
+PARAMETRIC MACROS IN C
+----------------------
+
+Pour faire une "même" fonction avec des parametres de types différents, en c on devait soit faire une fonction différente pour chaque type de parametres, soit faire une macro paramétrique.
+
+ex:
+max_int(int x, int y) { return (x>=y? x : y); }
+max_int(float x, float y) { return (x>=y? x : y); }
+
+macro paramétrique:
+#define max(x, y) ( ((x)>=(y)) ? (x) : (y) )
+
+en c, ce qui commence par # = instruction de préprocesseur
+/!\ EFFET DE BORD: si x ou y contient qqch de très vnr, genre une fonction très gourmande, et qu'on la passe dans la macro, elle sera appelée 3 fois... contre 2 fois dans la fonction
+
+-----------------
+
+Meme chose si je veux faire des listes chainées, chaque liste va devoir etre spécialisée, plus toutes les fonctions qui s'y rapportent..
+
+typedef struct int_list_s { int n; struct int_list *next; } int_list_t;
+
+int_list_t *int_list_new(int n);
+[...etc etc... pour chaque type... RELOU]
+
+Ou alors il faudra une liste ultra générique:
+
+struct list_s {
+	
+	void *content;
+	size_t size;
+	struct list_s *next
+} list_t;
+
+list_s *list_new(void *content, size_t size)
+
+MAIS! bcp de déréférencements à chaque fois qu'on veut acceder à nos valeurs = un programme LENT
+
+
+>>>C'est la que les templates vont être tiptop, on va pouvoir laisser des trous au niveau des types et ne modifier que ça histoire d'être un peu plus libre, de passer moins de temps à écrire des trucs moches, et ainsi d'avoir + de temps pour courir après les papillons.
+
+--------------------------------------------------------------
+----------
+TEMPLATES
+----------
+
+int max(int x, int y) {
+	return (x>=y ? x : y);
+}
+
+DEVIENT
+('T' pour 'Type quelconque', mais partout où on met le meme 'type quelconque', il s'agit bien du même. On peut le nommer comme on veut)
+(on indique au compilo avec 'template' qu'on annonce un type quelconque)
+(comme on est en c++, on prend nos params en const &, ça prend moins de place en mémoire avec une référence et plus c'est const mieux c'est)
+-------------------
+template< typename T>
+
+T const & max(T const &x, T const &y) {
+	return (x>=y ? x : y);
+}
+--------------------
+
+POUR INSTANCIER UN TEMPLATE DE FONCTION:
+
+- Instanciation explicite:
+Avec une sorte de cast.
+	int a;
+	int b;
+	std::cout << max<int>(a, b);
+
+- Instanciation implicite:
+	int a;
+	int b;
+	std::cout << max(a, b);
+
+--------------------
+
+TEMPLATE DE CLASSE:
+
+template< typename T >
+
+class List {
+	
+	public:
+		List<T>(T const &content) {};
+		List<T>(List<T> const & list) {};
+		~List<T>( void ){};
+		[..etc..]
+	
+	private:
+		T _content;
+		List<T> *_next;
+};
+
+int main(){
+	
+	List< int > 	a(42);
+	List< float > 	b(3.5f);
+	List< List< int > > c(a);
+	[...]
+	return 0;
+}
+
+On peut aussi annoncer 2 types 
+	template< typename T, typename U >
+On appelera
+	List< int, float>
+-------------------
+
+--------------------------------------------------------------
+------------
+DEFAULT TYPE
+------------
+
+template< typename T = float >
+Si l'on indique pas de type, le type par défaut sera ici float:
+
+>>> exemple d'implémentation: voir Vertex_classT.hpp et Vertex_main.cpp
+
+--------------------------------------------------------------
+--------------
+SPECIALIZATION
+--------------
+
+On peut affiner le comportement du code du template.
+
+Non spécialisation:
+
+template< typename T, typename U >
+class Pair <int, U>{
+	public:
+	[...faire des trucs avec T et U...]
+}
+
+Specialisation partielle:
+
+template< typename U >
+class Pair <int, U>{
+	public:
+	[... l'un des types utilisés sera forcément int]
+}
+
+Specialisation totale:
+
+template<>
+class Pair <bool, bool>{
+	public:
+	[...les types utilisés seront forcément bool]
+}
+
+A l'instanciation, pour appeler l'une ou l'autre des ces classes Pair, on appelera
+Pair<int, float>
+Pair<bool, bool>
+Pair<std::string, std::string>
+[...etc...]
+
+>>> exemple d'implémentation: voir Pair_classT.hpp et Pair_main.cpp

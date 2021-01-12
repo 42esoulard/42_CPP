@@ -57,4 +57,12 @@ Learning CPP basics.
     - Cast operator
     - Explicit
 
+**CPP07**
+  - Parametric macros in C
+  - C++ templates
+  - Function templates
+  - Class templates
+    - Default type
+    - Partial and total specialization
+
 Written in december 2020 - january 2021.
