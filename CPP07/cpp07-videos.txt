@@ -120,7 +120,7 @@ DEFAULT TYPE
 template< typename T = float >
 Si l'on indique pas de type, le type par défaut sera ici float:
 
->>> exemple d'implémentation: voir Vertex_classT.hpp et Vertex_main.cpp
+>>> exemple d'implémentation: voir dans Examples/ Vertex_classT.hpp et Vertex_main.cpp
 
 --------------------------------------------------------------
 --------------
@@ -159,4 +159,4 @@ Pair<bool, bool>
 Pair<std::string, std::string>
 [...etc...]
 
->>> exemple d'implémentation: voir Pair_classT.hpp et Pair_main.cpp
+>>> exemple d'implémentation: voir dans Examples/ Pair_classT.hpp et Pair_main.cpp
