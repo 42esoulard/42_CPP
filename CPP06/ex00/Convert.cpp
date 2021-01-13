@@ -6,7 +6,7 @@
 /*   By: esoulard <esoulard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/09 12:38:12 by esoulard          #+#    #+#             */
-/*   Updated: 2021/01/11 18:22:22 by esoulard         ###   ########.fr       */
+/*   Updated: 2021/01/13 14:00:02 by esoulard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,7 @@ int Convert::_parseInput(std::string const &input) {
 	// --------------------------
 	//CHECK IF VALID DOUBLE
 	int size = input.size();
-	if ((_doubleConv = strtod(input.c_str(), nullptr)) ||
+	if ((_doubleConv = strtod(input.c_str(), NULL)) ||
 		(!_doubleConv && _isZero(idx))) {
 		return T_DOUBLE;
 	}

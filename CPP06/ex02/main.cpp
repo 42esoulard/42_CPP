@@ -6,7 +6,7 @@
 /*   By: esoulard <esoulard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 12:48:28 by esoulard          #+#    #+#             */
-/*   Updated: 2021/01/11 18:01:23 by esoulard         ###   ########.fr       */
+/*   Updated: 2021/01/13 14:02:10 by esoulard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ Base *generate(void) {
 
 void identify_from_pointer(Base * p) {
 
+	if (!p)
+		return;
 	try {
 		A a = dynamic_cast<A &>(*p);
 		std::cout << "A" << std::endl;
