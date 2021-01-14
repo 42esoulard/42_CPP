@@ -6,7 +6,7 @@
 /*   By: esoulard <esoulard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 18:18:42 by esoulard          #+#    #+#             */
-/*   Updated: 2021/01/14 11:28:48 by esoulard         ###   ########.fr       */
+/*   Updated: 2021/01/14 13:20:19 by esoulard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,8 @@ int 	main(void) {
 	std::cout << "[AFTER ITER (multiply *2)] " << std::endl;
 	iter<float>(float_arr, 3, &read);
 
+	std::cout << "---------------------------" << std::endl;
+	iter<std::string>(NULL, 3, &read);
 
 	return 0;
 }

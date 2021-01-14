@@ -6,7 +6,7 @@
 /*   By: esoulard <esoulard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 18:12:21 by esoulard          #+#    #+#             */
-/*   Updated: 2021/01/12 21:00:57 by esoulard         ###   ########.fr       */
+/*   Updated: 2021/01/14 13:19:36 by esoulard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,10 @@
 template<typename T>
 void iter(T *addr, size_t size, void (&function)(T &)) {
 	
-	for (int i = 0; i < size; i++)
-		function(addr[i]);
+	if (addr) {
+		for (int i = 0; i < size; i++)
+			function(addr[i]);
+	}
 }
 
 template<typename T>
