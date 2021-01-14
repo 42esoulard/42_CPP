@@ -4,7 +4,7 @@ SRCS		= main.cpp
 OBJS		= ${SRCS:.cpp=.o}
 
 INC_DIR		= .
-INCLUDES	= iter.hpp
+INCLUDES	= whatever.hpp
 
 CPP			= clang++
 CFLAGS		= -Wall -Wextra -Werror -std=c++98
