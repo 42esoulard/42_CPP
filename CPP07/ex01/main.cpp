@@ -6,20 +6,32 @@
 /*   By: esoulard <esoulard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 18:18:42 by esoulard          #+#    #+#             */
-/*   Updated: 2021/01/12 21:03:29 by esoulard         ###   ########.fr       */
+/*   Updated: 2021/01/14 11:28:48 by esoulard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "iter.hpp"
 
+void 	imJustARegularReadStrFunction(std::string &bla) {
+
+	std::cout << bla << std::endl;
+}
+
+void 	imJustARegularReadIntFunction(int &bla) {
+
+	std::cout << bla << std::endl;
+}
+
 int 	main(void) {
 
 	std::string str_arr[] = {"abc", "def", "ghi"};
 
 	std::cout << "[STD::STRING_ARRAY] " << std::endl;
+	std::cout << "[-> with template function] " << std::endl;
 	iter<std::string>(str_arr, 3, &read);
-
+	std::cout << "[-> with regular function] " << std::endl;
+	iter<std::string>(str_arr, 3, imJustARegularReadStrFunction);
 
 	std::cout << "---------------------------" << std::endl;
 
@@ -38,7 +50,11 @@ int 	main(void) {
 	int int_arr[] = {1,2,3};
 
 	std::cout << "[INT_ARRAY] " << std::endl;
+	std::cout << "[-> with template function] " << std::endl;
 	iter<int>(int_arr, 3, &read);
+	std::cout << "[-> with regular function] " << std::endl;
+	iter<int>(int_arr, 3, imJustARegularReadIntFunction);
+
 
 	iter<int>(int_arr, 3, &increment);
 	std::cout << "[AFTER ITER (increment)] " << std::endl;
