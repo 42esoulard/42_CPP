@@ -1,0 +1,85 @@
+STL
+Standard Template Library
+
+Contient:
+	- Des conteneurs génériques templatés
+	- Des algorithmes
+
+
+-------------------------------
+
+CONTENEURS
+
+Exemples:
+#include <iostream>
+#include <map>
+#include <vector>
+#include <list>
+
+int main {
+
+	std::list<int>		lst1;
+	//liste templatée, ici en int
+
+
+	lst1.push_back(1);
+	lst1.push_back(17);
+	lst1.push_back(42);
+
+	std::list<int>::const_iterator it;
+	std::list<int>::const_iterator ite = lst1.end();
+	//la fonction end() de list est APRES le dernier elem
+	// un iterator est un peu comme un pointeur sur element de list. 
+	//On peut l'incrémenter et le déréférencer comme un pointeur.
+
+	for (it = lst1.begin(); it != ite; ++it) {
+	 	std::cout << *it << std::endl;
+	}
+
+
+	//-----------------------------
+
+	std::map<std::string, IOperation*> map1;
+	//on peut utiliser ce qu'on veut comme type de map
+	//on pourra créer des combo clé/valeur
+	//je crois
+
+	map1["opA"] = new OperationA;
+	map1["opB"] = new OperationB;
+
+	//-----------------------------
+
+	std::vector<int> 	v1;
+	std::vector<int> 	v2(42, 100);
+	//Fancy name pour dire qu'on crée un tableau qui contiendra ce qu'on veut
+	//v2 contiendra 42 entrée qui contiendront "100"
+
+
+	return 0;
+}
+
+Quasiment toutes les classes de la STL peuvent utiliser es iterator, qui peuvent d'ailleurs etre const ou pas.
+
+//-----------------------------------
+
+ALGORITHMES
+
+Fonctions préimplémentées qui peuvent opérer sur des collections et réaliser des opération standard.
+
+Exemple:
+for_each.
+
+void displayInt(int i) {
+	std::cout << i << std::endl;
+}
+
+int main() {
+	std::list<int> lst;
+
+	lst.push_back(10);
+	lst.push_back(25);
+	lst.push_back(4561);
+	lst.push_back(12);
+
+	for_each(lst.begin(), lst.end(), displayInt());
+}
