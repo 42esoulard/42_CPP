@@ -6,7 +6,7 @@
 /*   By: esoulard <esoulard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 14:36:17 by esoulard          #+#    #+#             */
-/*   Updated: 2021/01/12 15:15:33 by esoulard         ###   ########.fr       */
+/*   Updated: 2021/01/14 10:23:20 by esoulard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 #include <iostream>
 
 int main(void) {
+
+	std::cout << "------------------INT---------------------" << std::endl;
 
 	int a = 2;
 	int b = 3;
@@ -35,8 +37,8 @@ int main(void) {
 	std::cout << "min( a, b ) = " << ::min( a, b ) << " [ADDR = " << &::min( a, b ) << "]" << std::endl;
 	std::cout << "max( a, b ) = " << ::max( a, b ) << " [ADDR = " << &::max( a, b ) << "]" << std::endl;
 
-
-	std::cout << "------------------------------------------" << std::endl;
+	std::cout << std::endl;
+	std::cout << "--------------------STR-------------------" << std::endl;
 
 	std::cout << std::endl;
 	std::string c = "chaine1";
@@ -52,8 +54,8 @@ int main(void) {
 	std::cout << "min( c, d ) = " << ::min( c, d ) << " [ADDR = " << &::min( c, d ) << "]" << std::endl;
 	std::cout << "max( c, d ) = " << ::max( c, d ) << " [ADDR = " << &::max( c, d ) << "]" << std::endl;
 
-
-	std::cout << "------------------------------------------" << std::endl;
+	std::cout << std::endl;
+	std::cout << "------------------FLOAT-------------------" << std::endl;
 
 	std::cout << std::endl;
 	float e = 42.1f;
@@ -69,8 +71,8 @@ int main(void) {
 	std::cout << "min( e, f ) = " << ::min( e, f ) << " [ADDR = " << &::min( e, f ) << "]" << std::endl;
 	std::cout << "max( e, f ) = " << ::max( e, f ) << " [ADDR = " << &::max( e, f ) << "]" << std::endl;
 
-
-	std::cout << "------------------------------------------" << std::endl;
+	std::cout << std::endl;
+	std::cout << "-------------------CHAR-------------------" << std::endl;
 
 	std::cout << std::endl;
 	char g = '1';
@@ -86,8 +88,8 @@ int main(void) {
 	std::cout << "min( g, h ) = " << ::min( g, h ) << " [ADDR = " << static_cast<void const *>(&::min( g, h )) << "]" << std::endl;
 	std::cout << "max( g, h ) = " << ::max( g, h ) << " [ADDR = " << static_cast<void const *>(&::max( g, h )) << "]" << std::endl;
 
-
-	std::cout << "------------------------------------------" << std::endl;
+	std::cout << std::endl;
+	std::cout << "-------------------DOUBLE------------------" << std::endl;
 
 	std::cout << std::endl;
 	double i = 123.123;
@@ -103,8 +105,8 @@ int main(void) {
 	std::cout << "min( i, j ) = " << ::min( i, j ) << " [ADDR = " << &::min( i, j ) << "]" << std::endl;
 	std::cout << "max( i, j ) = " << ::max( i, j ) << " [ADDR = " << &::max( i, j ) << "]" << std::endl;
 
-
-
+	std::cout << std::endl;
+	//std::cout << "------------------INT vs FLOAT--------------------" << std::endl;
 
 	/*
 	*	Not the same type: 
