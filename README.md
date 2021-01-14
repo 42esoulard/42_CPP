@@ -65,4 +65,9 @@ Learning CPP basics.
     - Default type
     - Partial and total specialization
 
+**CPP08**
+  - STL
+    - Containers: lists, maps, vectors... and iterators
+    - Algorithms (eg: for_each)
+
 Written in december 2020 - january 2021.
