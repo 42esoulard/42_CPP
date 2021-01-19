@@ -1,43 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   iter.hpp                                           :+:      :+:    :+:   */
+/*   customException.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: esoulard <esoulard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/12 18:12:21 by esoulard          #+#    #+#             */
-/*   Updated: 2021/01/15 18:38:46 by esoulard         ###   ########.fr       */
+/*   Created: 2021/01/04 14:43:04 by esoulard          #+#    #+#             */
+/*   Updated: 2021/01/09 11:54:13 by esoulard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ITER_HPP
-#define ITER_HPP
+#ifndef CUSTOMEXCEPTION_HPP
+#define CUSTOMEXCEPTION_HPP
 
-template<typename T>
-void iter(T *addr, size_t size, void (&function)(T const &)) {
+#include <string>
+
+class customException : public std::exception {
+			
+	public:
+		customException(std::string const &str) : _err(str) {};
+		virtual char const *what() const throw();
 	
-	if (addr) {
-		for (int i = 0; i < size; i++)
-			function(addr[i]);
-	}
-}
-
-template<typename T>
-void multiply(T &elem) {
-
-	elem *= 2;
-}
-
-template<typename T>
-void increment(T &elem) {
-
-	elem++;
-}
-
-template<typename T>
-void read(T &elem) {
-
-	std::cout << elem << std::endl;
-}
+	protected:
+		std::string const _err;	
+};
 
 #endif

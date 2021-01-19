@@ -81,5 +81,5 @@ int main() {
 	lst.push_back(4561);
 	lst.push_back(12);
 
-	for_each(lst.begin(), lst.end(), displayInt());
+	for_each(lst.begin(), lst.end(), displayInt);
 }
