@@ -4,7 +4,7 @@ SRCS		= main.cpp customException.cpp span.cpp
 OBJS		= ${SRCS:.cpp=.o}
 
 INC_DIR		= .
-INCLUDES	= easyfind.hpp customException.hpp span.hpp
+INCLUDES	= customException.hpp span.hpp
 
 CPP			= clang++
 CFLAGS		= -Wall -Wextra -Werror -std=c++98

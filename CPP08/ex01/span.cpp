@@ -6,17 +6,19 @@
 /*   By: esoulard <esoulard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 18:37:20 by esoulard          #+#    #+#             */
-/*   Updated: 2021/01/19 19:35:46 by esoulard         ###   ########.fr       */
+/*   Updated: 2021/01/21 16:09:25 by esoulard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Span.hpp"
+#include "span.hpp"
 #include "customException.hpp"
 #include <iostream>
+#include <list>
+#include <algorithm>
 
-Span::Span(unsigned int const N) : _size(N), _cur(0) {
+Span::Span(unsigned int const N) : _size(N) {
 
-	_tab = new int[N]();
+	std::cout << "[Span] Default constructor called" << std::endl;
 };
 
 Span::Span(void) {
@@ -24,7 +26,7 @@ Span::Span(void) {
 	std::cout << "[Span] Default constructor called" << std::endl;
 };
 
-Span::Span(Span const &src) : _size(-1) {
+Span::Span(Span const &src) : _size(src._size) {
 
 	std::cout << "[Span] Copy constructor called" << std::endl;
 	*this = src;
@@ -32,55 +34,96 @@ Span::Span(Span const &src) : _size(-1) {
 
 Span::~Span(void) {
 
-	delete[] _tab;
 	std::cout << "[Span] Destructor called" << std::endl;
 };
 
 Span & Span::operator=(Span const &rhs) {
 
 	std::cout << "[Span] Assignation operator called" << std::endl;
+	_tab.erase(_tab.begin(), _tab.end());
 
-	if (_size > -1)
-		delete[] _tab;
-	_size = rhs.getSize();
-	_tab = new int[_size]();
+	std::list<int>::const_iterator itSrc;
+	std::list<int>::const_iterator itSrce = rhs._tab.end();
 
-	for (int i = 0; i < _size; i++)
-		_tab[i] = rhs.getEntry(i);
-	_cur = rhs.getCur();
+	for (itSrc = rhs._tab.begin(); itSrc != itSrce; itSrc++) {
+	 	_tab.push_back(*itSrc);
+	}
 
 	return *this;
 };
 
-void 		addNumber(int const &nb) {
+void 		Span::addNumber(int const &nb) {
 
-	if (_cur == _size)
-		throw customException("All numbers are already filled!")
-	_cur++;
+	if (_tab.size() == _size)
+		throw customException("All slots are full, can't store any more ints!");
+	this->_tab.push_back(nb);
 };
 
-int const 	&shortestSpan(void);
-int const 	&longestSpan(void);
+void 		Span::addNumber(std::list<int>::iterator &ita, std::list<int>::iterator &itb) {
 
-int const 	&getSize(void) const {
+	int i = 0;
 
-	return this->_size;
+	if (std::distance(ita, itb) > _size - _tab.size())
+		throw customException("Range won't fit this Span instance :(");
+	
+	for (ita; ita != itb; ita++) {
+		_tab.push_back(*ita);
+	}
 };
 
-int const 	&getCur(void) const {
+int const 	Span::shortestSpan(void) {
 
-	return this->_cur;
+	if (_tab.size() <= 1)
+		throw customException("Not enough entries to check for a span");
+	
+	_tab.sort();
+
+	std::list<int>::const_iterator it = ++(_tab.begin());
+	std::list<int>::const_iterator ite = _tab.end();
+	std::list<int>::const_iterator prev = _tab.begin();
+
+	int span = *it - *prev;
+
+	for (it = ++(_tab.begin()); it != ite; it++) {
+		if (span > *it - *prev)
+			span = *it - *prev;
+		prev++;
+	}
+	return span;
 };
 
-int const 	&getEntry(int const index) const {
 
-	if (index >= _size)
-		throw customException("Index doesn't exist!")
-	return (_tab[index]);
+int const 	Span::longestSpan(void) {
+
+	if (_tab.size() <= 1)
+		throw customException("Not enough entries to check for a span");
+	
+	_tab.sort();
+	std::list<int>::const_iterator it = _tab.begin();
+	std::list<int>::const_iterator ite = _tab.end();
+	ite--;
+
+	return *ite - *it;
 };
 
-// std::ostream & operator<<(std::ostream &o, Span const &rhs) {
+std::list<int> const &Span::getTab(void) const {
 
-// 	//return o << << std::endl;
-// };
+	return (_tab);
+};
+
+std::ostream & operator<<(std::ostream &o, Span const &rhs) {
+
+	std::list<int> const tmp = rhs.getTab();
+
+	std::list<int>::const_iterator it;
+	std::list<int>::const_iterator ite = tmp.end();
+
+	o << "------------" << std::endl;
+	o << "[ ";
+	for (it = tmp.begin(); it != ite; it++)
+		o << *it << " ";
+	o << "]" << std::endl;
+	o << "------------" << std::endl;
+	return o;
+};
 

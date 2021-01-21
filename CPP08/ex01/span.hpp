@@ -6,7 +6,7 @@
 /*   By: esoulard <esoulard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 18:37:05 by esoulard          #+#    #+#             */
-/*   Updated: 2021/01/19 19:36:07 by esoulard         ###   ########.fr       */
+/*   Updated: 2021/01/21 16:09:20 by esoulard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #define SPAN_HPP
 
 #include <iostream>
+#include <list>
 
 class Span {
 
@@ -26,23 +27,22 @@ class Span {
 		Span & operator=(Span const &rhs);
 
 		void 		addNumber(int const &nb);
-		int const 	&shortestSpan(void);
-		int const 	&longestSpan(void);
+		void 		addNumber(std::list<int>::iterator &ita, std::list<int>::iterator &itb);
+		
+		int const 	shortestSpan(void);
+		int const 	longestSpan(void);
 
-		int const 	&getSize(void) const;
-		int const 	&getCur(void) const;
-		int const 	&getEntry(void) const;
+		std::list<int> const &getTab(void) const;
 
 	private:
 
 		Span(void);
-		int *_tab;
+		std::list<int> _tab;
 		int _size;
-		int _cur;
 
 
 };
 
-// std::ostream & operator<<(std::ostream &o, Span const &rhs);
+std::ostream & operator<<(std::ostream &o, Span const &rhs);
 
 #endif
