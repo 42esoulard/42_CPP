@@ -6,7 +6,7 @@
 /*   By: esoulard <esoulard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/14 17:15:24 by esoulard          #+#    #+#             */
-/*   Updated: 2021/01/19 12:27:14 by esoulard         ###   ########.fr       */
+/*   Updated: 2021/01/24 16:51:03 by esoulard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 ** takes a T<int, nextT>
 ** returns an iterator on T<int, next> and an int
 */
+
 template <template <typename, typename> class T>
 typename T<int, std::allocator<int>>::const_iterator easyfind(T<int, std::allocator<int>> const &var1, int const var2) {
 
