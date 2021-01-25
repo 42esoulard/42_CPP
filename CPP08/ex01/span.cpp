@@ -6,7 +6,7 @@
 /*   By: esoulard <esoulard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 18:37:20 by esoulard          #+#    #+#             */
-/*   Updated: 2021/01/21 16:09:25 by esoulard         ###   ########.fr       */
+/*   Updated: 2021/01/25 11:27:44 by esoulard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,13 +59,14 @@ void 		Span::addNumber(int const &nb) {
 	this->_tab.push_back(nb);
 };
 
-void 		Span::addNumber(std::list<int>::iterator &ita, std::list<int>::iterator &itb) {
-
+template <typename iterator>
+void 		Span::addNumber(iterator &ita, iterator &itb) {
+	
 	int i = 0;
 
 	if (std::distance(ita, itb) > _size - _tab.size())
 		throw customException("Range won't fit this Span instance :(");
-	
+			
 	for (ita; ita != itb; ita++) {
 		_tab.push_back(*ita);
 	}

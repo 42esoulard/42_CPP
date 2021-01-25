@@ -6,7 +6,7 @@
 /*   By: esoulard <esoulard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 18:37:05 by esoulard          #+#    #+#             */
-/*   Updated: 2021/01/21 16:09:20 by esoulard         ###   ########.fr       */
+/*   Updated: 2021/01/25 11:10:46 by esoulard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include <iostream>
 #include <list>
+#include "customException.hpp"
 
 class Span {
 
@@ -27,7 +28,9 @@ class Span {
 		Span & operator=(Span const &rhs);
 
 		void 		addNumber(int const &nb);
-		void 		addNumber(std::list<int>::iterator &ita, std::list<int>::iterator &itb);
+		
+		template <typename iterator>
+		void 		addNumber(iterator &ita, iterator &itb);
 		
 		int const 	shortestSpan(void);
 		int const 	longestSpan(void);

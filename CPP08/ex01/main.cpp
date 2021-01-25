@@ -6,7 +6,7 @@
 /*   By: esoulard <esoulard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 18:37:36 by esoulard          #+#    #+#             */
-/*   Updated: 2021/01/21 16:09:09 by esoulard         ###   ########.fr       */
+/*   Updated: 2021/01/25 11:39:23 by esoulard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int main(void) {
 
 		spb.addNumber(it, ite);
 
-		std::cout << spb << std::endl;
+		// std::cout << spb << std::endl;
 
 		std::cout << "Shortest: " << spb.shortestSpan() << std::endl;
 		std::cout << "Longest: " << spb.longestSpan() << std::endl;
