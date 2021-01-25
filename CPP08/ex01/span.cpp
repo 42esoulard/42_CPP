@@ -6,7 +6,7 @@
 /*   By: esoulard <esoulard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 18:37:20 by esoulard          #+#    #+#             */
-/*   Updated: 2021/01/25 11:27:44 by esoulard         ###   ########.fr       */
+/*   Updated: 2021/01/25 13:13:50 by esoulard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,19 +57,6 @@ void 		Span::addNumber(int const &nb) {
 	if (_tab.size() == _size)
 		throw customException("All slots are full, can't store any more ints!");
 	this->_tab.push_back(nb);
-};
-
-template <typename iterator>
-void 		Span::addNumber(iterator &ita, iterator &itb) {
-	
-	int i = 0;
-
-	if (std::distance(ita, itb) > _size - _tab.size())
-		throw customException("Range won't fit this Span instance :(");
-			
-	for (ita; ita != itb; ita++) {
-		_tab.push_back(*ita);
-	}
 };
 
 int const 	Span::shortestSpan(void) {
