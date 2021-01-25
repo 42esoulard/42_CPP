@@ -6,13 +6,14 @@
 /*   By: esoulard <esoulard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/14 17:15:24 by esoulard          #+#    #+#             */
-/*   Updated: 2021/01/25 11:16:58 by esoulard         ###   ########.fr       */
+/*   Updated: 2021/01/25 11:19:03 by esoulard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef EASYFIND_HPP
 #define EASYFIND_HPP
 
+#include <algorithm>
 #include "customException.hpp"
 
 template <typename Container>
